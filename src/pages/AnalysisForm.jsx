@@ -259,10 +259,33 @@ const AnalysisForm = ({
                             </Form.Item>
                         </Col>
                         <Col xs={24} md={12}>
-                            <Form.Item label="Usage Type" name="usageType" rules={[{ required: true }]}>
+                            <Form.Item label="Employment Type" name="employmentType" initialValue="Salaried" rules={[{ required: true }]}>
+                                <Radio.Group
+                                    onChange={(e) => {
+                                        if (e.target.value === 'Salaried') {
+                                            form.setFieldsValue({ usageType: 'Personal' });
+                                        }
+                                    }}
+                                >
+                                    <Space size={16}>
+                                        <Radio value="Salaried">Salaried</Radio>
+                                        <Radio value="Self-Employed">Self-Employed</Radio>
+                                    </Space>
+                                </Radio.Group>
+                            </Form.Item>
+                        </Col>
+                        <Col xs={24} md={12}>
+                            <Form.Item 
+                                label="Usage Type" 
+                                name="usageType" 
+                                rules={[{ required: true }]}
+                                help="Business usage is only available for self-employed individuals."
+                            >
                                 <Select style={inputStyle} placeholder="Select Usage">
                                     <Option value="Personal">Personal</Option>
-                                    <Option value="Business" disabled={employmentType === 'Salaried'}>Business (Deductible only for Self-Employed)</Option>
+                                    {employmentType === 'Self-Employed' && (
+                                        <Option value="Business">Business</Option>
+                                    )}
                                 </Select>
                             </Form.Item>
                         </Col>
@@ -1180,14 +1203,16 @@ const AnalysisForm = ({
                             style={cardStyle}
                         >
                             <Row gutter={[24, 0]}>
-                                <Col xs={24} md={24}>
-                                    <Form.Item label="Employment Type" name="employmentType" initialValue="Salaried" rules={[{ required: true }]}>
-                                        <Radio.Group buttonStyle="solid">
-                                            <Radio.Button value="Self-Employed">Self-Employed</Radio.Button>
-                                            <Radio.Button value="Salaried">Salaried</Radio.Button>
-                                        </Radio.Group>
-                                    </Form.Item>
-                                </Col>
+                                {!isVehicle && (
+                                    <Col xs={24} md={24}>
+                                        <Form.Item label="Employment Type" name="employmentType" initialValue="Salaried" rules={[{ required: true }]}>
+                                            <Radio.Group buttonStyle="solid">
+                                                <Radio.Button value="Self-Employed">Self-Employed</Radio.Button>
+                                                <Radio.Button value="Salaried">Salaried</Radio.Button>
+                                            </Radio.Group>
+                                        </Form.Item>
+                                    </Col>
+                                )}
                                 <Col xs={24} md={12}>
                                     <Form.Item label="Annual Income (Gross) (₹)" name="annualSalary" rules={[{ required: true, message: 'Income is required' }]}>
                                         <InputNumber style={inputStyle} prefix="₹" min={0} placeholder="E.g. 1500000" />
