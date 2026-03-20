@@ -15,7 +15,7 @@ const Recommendations = () => {
         return (
             <div style={{ padding: '40px', textAlign: 'center' }}>
                 <Title level={2}>Actionable Recommendations</Title>
-                <div style={{ padding: '60px', background: '#fff', borderRadius: '24px', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
+                <div style={{ padding: '60px', background: 'var(--bg-card)', borderRadius: '24px', boxShadow: 'var(--card-shadow)' }}>
                     <p>Recommendations are generated based on your profile. Please provide your data first.</p>
                     <Button type="primary" onClick={() => navigate('/category-selection')}>Generate Recommendations</Button>
                 </div>
@@ -35,7 +35,7 @@ const Recommendations = () => {
             title: 'Enable Auto-Regime Selector',
             description: 'The engine will automatically pick the cheaper regime based on your latest inputs.',
             icon: <SwapOutlined />,
-            iconColor: '#5B92E5',
+            iconColor: 'var(--accent-secondary)',
             savings: '₹12,000+',
             tag: 'Regime'
         });
@@ -49,7 +49,7 @@ const Recommendations = () => {
             title: 'Maximize NPS (80CCD 1B)',
             description: 'Invest an additional ₹50,000 in Tier-1 NPS to get exclusive deduction beyond the ₹1.5L Sec 80C limit.',
             icon: <RocketOutlined />,
-            iconColor: '#8B5CF6',
+            iconColor: 'var(--accent-secondary)',
             savings: '₹15,600',
             tag: 'Retirement'
         });
@@ -62,7 +62,7 @@ const Recommendations = () => {
             title: 'Harvest ₹1.25L Tax-Free Gain',
             description: 'Equity LTCG is tax-free up to ₹1.25 Lakh. Consider selling and reinvesting to reset your purchase price tax-efficiently.',
             icon: <SwapOutlined />,
-            iconColor: '#10B981',
+            iconColor: 'var(--success)',
             savings: '₹15,625',
             tag: 'LTCG Rule'
         });
@@ -73,7 +73,7 @@ const Recommendations = () => {
                 title: 'Offset Capital Gains',
                 description: 'Use your previous losses to offset current year gains. Ensure you file ITR before deadline to carry forward losses.',
                 icon: <CheckCircleOutlined />,
-                iconColor: '#F59E0B',
+                iconColor: 'var(--warning)',
                 savings: 'Variable',
                 tag: 'Loss Offset'
             });
@@ -88,7 +88,7 @@ const Recommendations = () => {
                 title: 'Convert to Business Asset',
                 description: `Claiming your ${subcategory} as a business asset allows for 15% depreciation shield for cars (30% for bikes).`,
                 icon: <CarOutlined />,
-                iconColor: '#10B981',
+                iconColor: 'var(--success)',
                 savings: '₹35,000+',
                 tag: 'Optimization'
             });
@@ -100,7 +100,7 @@ const Recommendations = () => {
                 title: 'Leverage 80EEB EV Loan',
                 description: 'EV loans offer ₹1.5L interest deduction. Even if you have cash, a small loan can shield higher income from tax.',
                 icon: <RocketOutlined />,
-                iconColor: '#5B92E5',
+                iconColor: 'var(--accent-secondary)',
                 savings: '₹46,800',
                 tag: 'EV Benefit'
             });
@@ -119,7 +119,7 @@ const Recommendations = () => {
                 title: 'Optimize Health Cover',
                 description: `Increase your coverage or add parents to utilize the full Sec 80D limit of ₹${limit80D.toLocaleString()}.`,
                 icon: <RocketOutlined />,
-                iconColor: '#10B981',
+                iconColor: 'var(--success)',
                 savings: '₹7,500+',
                 tag: 'Protection'
             });
@@ -130,7 +130,7 @@ const Recommendations = () => {
             title: 'Claim Preventive Health Checkup',
             description: 'Claim up to ₹5,000/year for health checkups. This is within the 80D limit and often missed by taxpayers.',
             icon: <CheckCircleOutlined />,
-            iconColor: '#5B92E5',
+            iconColor: 'var(--accent-secondary)',
             savings: '₹1,560',
             tag: 'Health'
         });
@@ -144,7 +144,7 @@ const Recommendations = () => {
                 title: 'Home Loan Interest Shield',
                 description: 'Self-occupied property interest up to ₹2 Lakh is deductible. Consider taking a loan for renovations if needed.',
                 icon: <SwapOutlined />,
-                iconColor: '#8B5CF6',
+                iconColor: 'var(--accent-secondary)',
                 savings: '₹62,400',
                 tag: 'Sec 24b'
             });
@@ -154,8 +154,8 @@ const Recommendations = () => {
     const recCardStyle = {
         borderRadius: '24px',
         border: 'none',
-        boxShadow: '0 8px 30px rgba(0,0,0,0.03)',
-        background: '#FFFFFF',
+        boxShadow: 'var(--card-shadow)',
+        background: 'var(--bg-card)',
         height: '100%',
         transition: 'transform 0.3s ease',
         cursor: 'default'
@@ -165,26 +165,26 @@ const Recommendations = () => {
         <ConfigProvider
             theme={{
                 token: {
-                    colorPrimary: '#5B92E5',
-                    borderRadius: 20,
+                    colorPrimary: '#1B3A6B',
+                    borderRadius: 10,
                     fontFamily: "'Outfit', sans-serif",
                 },
             }}
         >
-            <Layout style={{ minHeight: '100vh', background: '#F2F3F4', padding: '40px 24px' }}>
+            <Layout style={{ minHeight: '100vh', background: 'var(--bg-page)', padding: '40px 24px' }}>
                 <Content style={{ maxWidth: '1000px', margin: '0 auto', width: '100%' }}>
                     <Button
                         icon={<ArrowLeftOutlined />}
                         onClick={() => navigate('/dashboard', { state: location.state })}
-                        style={{ marginBottom: '24px', borderRadius: '12px', fontWeight: 600, color: '#08457E' }}
+                        style={{ marginBottom: '24px', borderRadius: '12px', fontWeight: 600, color: 'var(--accent-primary)' }}
                     >
                         Back to Dashboard
                     </Button>
 
-                    <Title level={2} style={{ color: '#08457E', fontWeight: 800 }}>
+                    <Title level={2} style={{ color: 'var(--accent-primary)', fontWeight: 800 }}>
                         Actionable Recommendations
                     </Title>
-                    <Paragraph style={{ color: '#6B7280', fontSize: '16px', marginBottom: '40px' }}>
+                    <Paragraph style={{ color: 'var(--text-secondary)', fontSize: '16px', marginBottom: '40px' }}>
                         Step-by-step suggestions to improve your tax efficiency and financial health.
                     </Paragraph>
 
@@ -208,12 +208,12 @@ const Recommendations = () => {
                                                 {rec.icon}
                                             </div>
                                             <div>
-                                                <Title level={4} style={{ color: '#08457E', margin: '0 0 12px 0', fontWeight: 700 }}>{rec.title}</Title>
-                                                <Paragraph style={{ color: '#6B7280', fontSize: '15px', lineHeight: 1.6 }}>{rec.description}</Paragraph>
+                                                <Title level={4} style={{ color: 'var(--accent-primary)', margin: '0 0 12px 0', fontWeight: 700 }}>{rec.title}</Title>
+                                                <Paragraph style={{ color: 'var(--text-secondary)', fontSize: '15px', lineHeight: 1.6 }}>{rec.description}</Paragraph>
                                             </div>
-                                            <div style={{ padding: '16px 20px', background: '#F9FAFB', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                            <div style={{ padding: '16px 20px', background: 'var(--bg-card)', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                                 <Text type="secondary" style={{ fontSize: '13px', fontWeight: 600 }}>POTENTIAL SAVINGS</Text>
-                                                <Text strong style={{ color: '#10B981', fontSize: '18px' }}>{rec.savings}</Text>
+                                                <Text strong style={{ color: 'var(--success)', fontSize: '18px' }}>{rec.savings}</Text>
                                             </div>
                                         </Space>
                                     </Card>
@@ -223,15 +223,15 @@ const Recommendations = () => {
 
                         {recommendations.length === 0 && (
                             <Col span={24} style={{ textAlign: 'center', padding: '100px 0' }}>
-                                <Paragraph style={{ fontSize: '18px', color: '#6B7280' }}>Your profile is highly optimized. No additional recommendations available.</Paragraph>
+                                <Paragraph style={{ fontSize: '18px', color: 'var(--text-secondary)' }}>Your profile is highly optimized. No additional recommendations available.</Paragraph>
                             </Col>
                         )}
                     </Row>
 
                     <div style={{ marginTop: '80px', textAlign: 'center' }}>
-                        <div style={{ background: '#FFFFFF', padding: '32px', borderRadius: '24px', border: '1px dashed #5B92E5', display: 'inline-block', maxWidth: '600px' }}>
-                            <Title level={4} style={{ color: '#08457E', marginBottom: '12px' }}>Expert Review Available</Title>
-                            <Paragraph style={{ color: '#4B5563' }}>Get these recommendations vetted by a chartered accountant for personalized advice. Coming soon.</Paragraph>
+                        <div style={{ background: 'var(--bg-card)', padding: '32px', borderRadius: '24px', border: '1px dashed #5B92E5', display: 'inline-block', maxWidth: '600px' }}>
+                            <Title level={4} style={{ color: 'var(--accent-primary)', marginBottom: '12px' }}>Expert Review Available</Title>
+                            <Paragraph style={{ color: 'var(--text-secondary)' }}>Get these recommendations vetted by a chartered accountant for personalized advice. Coming soon.</Paragraph>
                         </div>
                     </div>
 

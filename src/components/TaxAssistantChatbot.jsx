@@ -46,13 +46,13 @@ const TaxAssistantChatbot = () => {
             style={{ 
                 marginTop: '40px', 
                 borderRadius: '24px', 
-                border: '1px solid #E5E7EB',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.02)'
+                border: '1px solid var(--border)',
+                boxShadow: 'var(--card-shadow)'
             }}
             bodyStyle={{ padding: 0 }}
         >
             <div style={{ 
-                background: '#08457E', 
+                background: 'var(--accent-primary)', 
                 padding: '20px 24px', 
                 borderTopLeftRadius: '24px', 
                 borderTopRightRadius: '24px' 
@@ -60,10 +60,10 @@ const TaxAssistantChatbot = () => {
                 <Title level={4} style={{ color: '#FFFFFF', margin: 0 }}>
                     <RobotOutlined style={{ marginRight: '8px' }} /> AI Tax Assistant
                 </Title>
-                <Text style={{ color: '#CCF1FF' }}>Ask anything about tax optimization.</Text>
+                <Text style={{ color: 'rgba(255,255,255,0.65)' }}>Ask anything about tax optimization.</Text>
             </div>
             
-            <div style={{ padding: '24px', background: '#FFFFFF', borderBottomLeftRadius: '24px', borderBottomRightRadius: '24px' }}>
+            <div style={{ padding: '24px', background: 'var(--bg-card)', borderBottomLeftRadius: '24px', borderBottomRightRadius: '24px' }}>
                 <div style={{ 
                     height: '250px', 
                     overflowY: 'auto', 
@@ -76,8 +76,9 @@ const TaxAssistantChatbot = () => {
                     {messages.map((msg, index) => (
                         <div key={index} style={{
                             alignSelf: msg.role === 'user' ? 'flex-end' : 'flex-start',
-                            background: msg.role === 'user' ? '#5B92E5' : '#F2F3F4',
-                            color: msg.role === 'user' ? '#FFF' : '#1F2937',
+                            background: msg.role === 'user' ? 'var(--accent-secondary)' : 'var(--bg-card)',
+                            border: msg.role === 'bot' ? '1px solid var(--border)' : 'none',
+                            color: msg.role === 'user' ? '#FFFFFF' : 'var(--text-primary)',
                             padding: '12px 16px',
                             borderRadius: '16px',
                             maxWidth: '85%',
@@ -85,9 +86,9 @@ const TaxAssistantChatbot = () => {
                             borderBottomLeftRadius: msg.role === 'bot' ? '4px' : '16px',
                         }}>
                             <Space size={8} align="start" style={{ display: 'flex' }}>
-                                {msg.role === 'bot' && <RobotOutlined style={{ fontSize: 16, marginTop: 4, color: '#084C8D' }} />}
+                                {msg.role === 'bot' && <RobotOutlined style={{ fontSize: 16, marginTop: 4, color: 'var(--accent-primary)' }} />}
                                 <Text style={{ color: 'inherit', display: 'block', whiteSpace: 'pre-line' }}>{msg.text}</Text>
-                                {msg.role === 'user' && <UserOutlined style={{ fontSize: 16, marginTop: 4, color: '#FFF' }} />}
+                                {msg.role === 'user' && <UserOutlined style={{ fontSize: 16, marginTop: 4, color: '#FFFFFF' }} />}
                             </Space>
                         </div>
                     ))}
@@ -107,7 +108,7 @@ const TaxAssistantChatbot = () => {
                         size="large"
                         icon={<SendOutlined />}
                         onClick={handleSend}
-                        style={{ borderRadius: '0 12px 12px 0', background: '#5B92E5', width: '60px' }}
+                        style={{ borderRadius: '0 30px 30px 0', width: '60px' }}
                     />
                 </Space.Compact>
             </div>

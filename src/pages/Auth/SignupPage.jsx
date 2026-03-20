@@ -12,34 +12,34 @@ const SignupPage = () => {
         <ConfigProvider
             theme={{
                 token: {
-                    colorPrimary: '#5B92E5', // United Nations Blue
-                    borderRadius: 12,
-                    colorText: '#1F2937',
+                    colorPrimary: '#1B3A6B', // United Nations Blue
+                    borderRadius: 10,
+                    colorText: 'var(--text-primary)',
                     fontFamily: "'Inter', sans-serif",
                 },
                 components: {
                     Button: {
-                        controlHeightLG: 52,
+                        controlHeightLG: 56,
                         fontWeight: 600,
-                        borderRadius: 12,
+                        borderRadius: 30,
                     },
                     Input: {
-                        colorBgContainer: '#EEF3FA',
-                        colorBorder: '#B8C8E6',
-                        borderRadius: 12,
-                        controlHeight: 48,
+                        colorBgContainer: 'var(--bg-card)',
+                        colorBorder: 'var(--border)',
+                        borderRadius: 20,
+                        controlHeight: 52,
                     },
                     Card: {
                         paddingLG: 40,
                         borderRadiusLG: 24,
-                        boxShadow: '0 8px 30px rgba(8, 76, 141, 0.08)',
+                        boxShadow: 'var(--card-shadow)',
                     }
                 },
             }}
         >
             <Layout style={{
                 minHeight: '100vh',
-                background: '#DCE6F5',
+                background: 'var(--bg-page)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -58,21 +58,21 @@ const SignupPage = () => {
                                 onClick={() => navigate('/')}
                                 style={{
                                     fontSize: 22,
-                                    color: '#084C8D',
+                                    color: 'var(--accent-primary)',
                                     cursor: 'pointer',
                                 }}
                             />
                             <Title level={2} style={{
                                 margin: 0,
                                 fontWeight: 700,
-                                color: '#084C8D'
+                                color: 'var(--accent-primary)'
                             }}>
                                 Create Account
                             </Title>
                         </Space>
                         <Text style={{
                             fontSize: 16,
-                            color: '#6B7280',
+                            color: 'var(--text-secondary)',
                             display: 'block'
                         }}>
                             Start your journey with professional tax optimization
@@ -82,11 +82,11 @@ const SignupPage = () => {
                     <Form layout="vertical" size="large">
 
 
-                        <Form.Item name="email" label={<Text strong style={{ color: '#084C8D' }}>Email</Text>}>
+                        <Form.Item name="email" label={<Text strong style={{ color: 'var(--accent-primary)' }}>Email</Text>}>
                             <Input placeholder="Enter your email" />
                         </Form.Item>
 
-                        <Form.Item name="password" label={<Text strong style={{ color: '#084C8D' }}>Password</Text>}>
+                        <Form.Item name="password" label={<Text strong style={{ color: 'var(--accent-primary)' }}>Password</Text>}>
                             <Input.Password placeholder="Create a password" />
                         </Form.Item>
 
@@ -99,8 +99,8 @@ const SignupPage = () => {
                         </Form.Item>
 
                         <div style={{ textAlign: 'center', marginTop: 24 }}>
-                            <Text style={{ color: '#6B7280' }}>
-                                Already have an account? <Link to="/login" style={{ color: '#5B92E5', fontWeight: 600 }}>Sign In</Link>
+                            <Text style={{ color: 'var(--text-secondary)' }}>
+                                Already have an account? <Link to="/login" style={{ color: 'var(--accent-secondary)', fontWeight: 600 }}>Sign In</Link>
                             </Text>
                         </div>
                     </Form>

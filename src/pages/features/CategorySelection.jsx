@@ -98,10 +98,10 @@ const CategorySelection = () => {
         border: isSelected ? '2px solid #5B92E5' : '2px solid transparent',
         boxShadow: isSelected
             ? '0 12px 40px rgba(91, 146, 229, 0.15)'
-            : '0 8px 30px rgba(0, 0, 0, 0.04)',
+            : 'var(--card-shadow)',
         cursor: 'pointer',
         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-        background: '#FFFFFF',
+        background: 'var(--bg-card)',
         height: '100%',
         padding: '32px',
         position: 'relative',
@@ -115,9 +115,9 @@ const CategorySelection = () => {
         fontSize: '16px',
         fontWeight: 600,
         textAlign: 'center',
-        background: isSelected ? '#5B92E5' : '#FFFFFF',
+        background: isSelected ? 'var(--accent-secondary)' : 'var(--bg-card)',
         border: isSelected ? '1.5px solid #5B92E5' : '1.5px solid #E5E7EB',
-        color: isSelected ? '#FFFFFF' : '#08457E',
+        color: isSelected ? 'var(--bg-card)' : 'var(--accent-primary)',
         transition: 'all 0.2s ease',
         boxShadow: isSelected ? '0 8px 16px rgba(91, 146, 229, 0.2)' : 'none'
     });
@@ -126,27 +126,27 @@ const CategorySelection = () => {
         <ConfigProvider
             theme={{
                 token: {
-                    colorPrimary: '#5B92E5',
-                    borderRadius: 20,
+                    colorPrimary: '#1B3A6B',
+                    borderRadius: 10,
                     fontFamily: "'Outfit', sans-serif",
                 },
             }}
         >
-            <Layout style={{ minHeight: '100vh', background: '#F2F3F4', padding: '60px 24px' }}>
+            <Layout style={{ minHeight: '100vh', background: 'var(--bg-page)', padding: '60px 24px' }}>
                 <Content style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}>
                     {/* Header */}
                     <div style={{ marginBottom: '64px', textAlign: 'center' }}>
-                        <Title level={1} style={{ color: '#08457E', marginBottom: '12px', fontWeight: 800, fontSize: '3rem' }}>
+                        <Title level={1} style={{ color: 'var(--accent-primary)', marginBottom: '12px', fontWeight: 800, fontSize: '3rem' }}>
                             Select Category
                         </Title>
-                        <Paragraph style={{ fontSize: '1.25rem', color: '#4B5563', maxWidth: 600, margin: '0 auto' }}>
+                        <Paragraph style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: 600, margin: '0 auto' }}>
                             What activity would you like to analyze for tax optimization today?
                         </Paragraph>
                     </div>
 
                     {/* Step 1: Main Category */}
                     <div style={{ marginBottom: '60px' }}>
-                        <Title level={4} style={{ color: '#08457E', marginBottom: '24px', opacity: 0.8, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px' }}>
+                        <Title level={4} style={{ color: 'var(--accent-primary)', marginBottom: '24px', opacity: 0.8, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px' }}>
                             01 — Main Category
                         </Title>
                         <Row gutter={[24, 24]}>
@@ -160,21 +160,21 @@ const CategorySelection = () => {
                                         <div style={{
                                             width: '64px',
                                             height: '64px',
-                                            background: selectedCategory === cat.id ? '#5B92E515' : '#F9FAFB',
+                                            background: selectedCategory === cat.id ? '#5B92E515' : 'var(--bg-card)',
                                             borderRadius: '18px',
                                             display: 'flex',
                                             alignItems: 'center',
                                             justifyContent: 'center',
-                                            color: selectedCategory === cat.id ? '#5B92E5' : '#08457E',
+                                            color: selectedCategory === cat.id ? 'var(--accent-secondary)' : 'var(--accent-primary)',
                                             marginBottom: '24px',
                                             margin: '0 auto 24px'
                                         }}>
                                             {cat.icon}
                                         </div>
-                                        <Title level={4} style={{ margin: '0 0 12px 0', color: '#08457E', fontWeight: 700 }}>
+                                        <Title level={4} style={{ margin: '0 0 12px 0', color: 'var(--accent-primary)', fontWeight: 700 }}>
                                             {cat.title}
                                         </Title>
-                                        <Text style={{ fontSize: '14px', lineHeight: '1.5', color: '#6B7280' }}>
+                                        <Text style={{ fontSize: '14px', lineHeight: '1.5', color: 'var(--text-secondary)' }}>
                                             {cat.description}
                                         </Text>
                                         {selectedCategory === cat.id && (
@@ -182,7 +182,7 @@ const CategorySelection = () => {
                                                 position: 'absolute',
                                                 top: '16px',
                                                 right: '16px',
-                                                color: '#5B92E5'
+                                                color: 'var(--accent-secondary)'
                                             }}>
                                                 <CheckCircleFilled style={{ fontSize: '24px' }} />
                                             </div>
@@ -196,7 +196,7 @@ const CategorySelection = () => {
                     {/* Step 2: Subcategory */}
                     {selectedCategory && (
                         <div style={{ marginBottom: '60px', animation: 'slideUp 0.4s ease-out' }}>
-                            <Title level={4} style={{ color: '#08457E', marginBottom: '24px', opacity: 0.8, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px' }}>
+                            <Title level={4} style={{ color: 'var(--accent-primary)', marginBottom: '24px', opacity: 0.8, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px' }}>
                                 02 — Select Subcategory
                             </Title>
                             <Row gutter={[16, 16]}>
@@ -219,7 +219,7 @@ const CategorySelection = () => {
                     {/* Step 3: Ownership (Vehicle Only) */}
                     {selectedCategory === 'Vehicle' && selectedSubcategory && (
                         <div style={{ marginBottom: '60px', animation: 'slideUp 0.4s ease-out' }}>
-                            <Title level={4} style={{ color: '#08457E', marginBottom: '24px', opacity: 0.8, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px' }}>
+                            <Title level={4} style={{ color: 'var(--accent-primary)', marginBottom: '24px', opacity: 0.8, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px' }}>
                                 03 — Ownership Type
                             </Title>
                             <Row gutter={[16, 16]}>
@@ -244,7 +244,7 @@ const CategorySelection = () => {
                             type="text"
                             icon={<ArrowLeftOutlined />}
                             onClick={() => navigate('/')}
-                            style={{ color: '#08457E', fontWeight: 600, fontSize: '16px' }}
+                            style={{ color: 'var(--accent-primary)', fontWeight: 600, fontSize: '16px' }}
                         >
                             Back to Landing Page
                         </Button>
@@ -258,7 +258,7 @@ const CategorySelection = () => {
                             }
                             .selection-card:hover {
                                 transform: translateY(-8px);
-                                box-shadow: 0 15px 35px rgba(8, 69, 126, 0.08) !important;
+                                box-shadow: var(--card-shadow) !important;
                             }
                             .sub-btn:hover {
                                 border-color: #5B92E5 !important;

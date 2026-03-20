@@ -5,7 +5,7 @@ const SummaryCards = ({ data }) => {
     const summaryCardStyle = {
         borderRadius: '16px',
         border: 'none',
-        boxShadow: '0 4px 20px rgba(8, 76, 141, 0.05)',
+        boxShadow: 'var(--card-shadow)',
         background: '#EEF3FA',
         textAlign: 'center',
         height: '100%'

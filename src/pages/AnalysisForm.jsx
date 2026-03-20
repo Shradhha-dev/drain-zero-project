@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
     Layout,
     Card,
@@ -12,7 +12,6 @@ import {
     Col,
     Divider,
     Select,
-    ConfigProvider,
     Radio,
     Tag,
     message,
@@ -209,8 +208,8 @@ const AnalysisForm = ({
     const cardStyle = {
         borderRadius: '24px',
         border: 'none',
-        boxShadow: '0 4px 25px rgba(0, 0, 0, 0.04)',
-        background: '#FFFFFF',
+        boxShadow: 'var(--card-shadow)',
+        background: 'var(--bg-card)',
         marginBottom: '24px'
     };
 
@@ -225,7 +224,7 @@ const AnalysisForm = ({
             <>
                 {/* Vehicle Details */}
                 <Card
-                    title={<Space><CarOutlined style={{ color: '#5B92E5' }} /> <span>Vehicle Details ({subcategory})</span></Space>}
+                    title={<Space><CarOutlined style={{ color: 'var(--accent-secondary)' }} /> <span>Vehicle Details ({subcategory})</span></Space>}
                     style={cardStyle}
                 >
                     <Row gutter={[24, 0]}>
@@ -310,7 +309,7 @@ const AnalysisForm = ({
                 {/* Employer Provided Section */}
                 {employmentType === 'Salaried' && (
                     <Card
-                        title={<Space><CarOutlined style={{ color: '#5B92E5' }} /> <span>Employer Provided {subcategory} (Perquisites)</span></Space>}
+                        title={<Space><CarOutlined style={{ color: 'var(--accent-secondary)' }} /> <span>Employer Provided {subcategory} (Perquisites)</span></Space>}
                         style={cardStyle}
                     >
                         <Row gutter={[24, 0]}>
@@ -355,7 +354,7 @@ const AnalysisForm = ({
 
                 {/* Loan Selection */}
                 <Card
-                    title={<Space><DollarOutlined style={{ color: '#5B92E5' }} /> <span>Vehicle Loan Details</span></Space>}
+                    title={<Space><DollarOutlined style={{ color: 'var(--accent-secondary)' }} /> <span>Vehicle Loan Details</span></Space>}
                     style={cardStyle}
                 >
                     <Row gutter={[24, 0]}>
@@ -407,9 +406,9 @@ const AnalysisForm = ({
                     style={{ marginBottom: '24px' }}
                 >
                     <Panel
-                        header={<Text strong style={{ color: '#08457E' }}>Advanced & Optional Details (Reimbursements, Market Value)</Text>}
+                        header={<Text strong style={{ color: 'var(--accent-primary)' }}>Advanced & Optional Details (Reimbursements, Market Value)</Text>}
                         key="1"
-                        style={{ background: '#FFFFFF', borderRadius: '24px', padding: '10px 20px', border: 'none', boxShadow: '0 4px 25px rgba(0, 0, 0, 0.04)' }}
+                        style={{ background: 'var(--bg-card)', borderRadius: '24px', padding: '10px 20px', border: 'none', boxShadow: 'var(--card-shadow)' }}
                     >
                         <Row gutter={[24, 0]}>
                             {usageType === 'Business' && employmentType === 'Self-Employed' && (
@@ -490,7 +489,7 @@ const AnalysisForm = ({
 
         return (
             <Card
-                title={<Space><MedicineBoxOutlined style={{ color: '#5B92E5' }} /> <span>Health Insurance Details</span></Space>}
+                title={<Space><MedicineBoxOutlined style={{ color: 'var(--accent-secondary)' }} /> <span>Health Insurance Details</span></Space>}
                 style={cardStyle}
             >
                 <Row gutter={[24, 0]}>
@@ -500,7 +499,7 @@ const AnalysisForm = ({
                             name="coverageType"
                             initialValue={`${hSubcategory} Insurance`}
                         >
-                            <Input style={{ ...inputStyle, background: '#F3F4F6', color: '#08457E', fontWeight: 700 }} readOnly />
+                            <Input style={{ ...inputStyle, background: 'var(--input-bg)', color: 'var(--accent-primary)', fontWeight: 700 }} readOnly />
                         </Form.Item>
                     </Col>
                     <Col xs={24} md={12}>
@@ -509,7 +508,7 @@ const AnalysisForm = ({
                                 <Space>
                                     Annual Premium Paid (₹) *
                                     <Tooltip title="Must be paid in non-cash mode (Online/Card/Cheque) to qualify.">
-                                        <InfoCircleOutlined style={{ fontSize: '12px', color: '#9CA3AF' }} />
+                                        <InfoCircleOutlined style={{ fontSize: '12px', color: 'var(--text-secondary)' }} />
                                     </Tooltip>
                                 </Space>
                             }
@@ -660,7 +659,7 @@ const AnalysisForm = ({
         
         return (
             <Card
-                title={<Space><StockOutlined style={{ color: '#5B92E5' }} /> <span>Investment Details ({assetType})</span></Space>}
+                title={<Space><StockOutlined style={{ color: 'var(--accent-secondary)' }} /> <span>Investment Details ({assetType})</span></Space>}
                 style={cardStyle}
             >
                 <Row gutter={[24, 0]}>
@@ -893,7 +892,7 @@ const AnalysisForm = ({
             <>
                 {/* BASIC PROPERTY DETAILS */}
                 <Card
-                    title={<Space><HomeOutlined style={{ color: '#5B92E5' }} /> <span>Property Details</span></Space>}
+                    title={<Space><HomeOutlined style={{ color: 'var(--accent-secondary)' }} /> <span>Property Details</span></Space>}
                     style={cardStyle}
                 >
                     <Row gutter={[24, 0]}>
@@ -982,7 +981,7 @@ const AnalysisForm = ({
                 {/* RENTAL INCOME DETAILS */}
                 {status === 'Let-Out' && !isAgricultural && !isPlot && (
                     <Card
-                        title={<Space><SafetyCertificateOutlined style={{ color: '#5B92E5' }} /> <span>Rental Income & Taxes</span></Space>}
+                        title={<Space><SafetyCertificateOutlined style={{ color: 'var(--accent-secondary)' }} /> <span>Rental Income & Taxes</span></Space>}
                         style={cardStyle}
                     >
                         <Row gutter={[24, 0]}>
@@ -1021,7 +1020,7 @@ const AnalysisForm = ({
                 {/* HOME LOAN DETAILS (Hidden for Agricultural) */}
                 {!isAgricultural && (
                     <Card
-                        title={<Space><DollarOutlined style={{ color: '#5B92E5' }} /> <span>Home Loan Details</span></Space>}
+                        title={<Space><DollarOutlined style={{ color: 'var(--accent-secondary)' }} /> <span>Home Loan Details</span></Space>}
                         style={cardStyle}
                     >
                         <Row gutter={[24, 0]}>
@@ -1076,7 +1075,7 @@ const AnalysisForm = ({
                 {/* SALE DETAILS */}
                 {status === 'Sold' && (
                     <Card
-                        title={<Space><RocketOutlined style={{ color: '#5B92E5' }} /> <span>Sale & Capital Gains</span></Space>}
+                        title={<Space><RocketOutlined style={{ color: 'var(--accent-secondary)' }} /> <span>Sale & Capital Gains</span></Space>}
                         style={cardStyle}
                     >
                         <Row gutter={[24, 0]}>
@@ -1139,16 +1138,8 @@ const AnalysisForm = ({
     };
 
     return (
-        <ConfigProvider
-            theme={{
-                token: {
-                    colorPrimary: '#5B92E5',
-                    borderRadius: 16,
-                    fontFamily: "'Outfit', sans-serif",
-                },
-            }}
-        >
-            <Layout style={{ minHeight: '100vh', background: '#F2F3F4', padding: '40px 24px' }}>
+        <>
+            <Layout style={{ minHeight: '100vh', background: 'var(--bg-page)', padding: '40px 24px' }}>
                 <Content style={{ maxWidth: '900px', margin: '0 auto', width: '100%' }}>
                     {/* Page Header */}
                     <div style={{ marginBottom: '32px' }}>
@@ -1156,12 +1147,12 @@ const AnalysisForm = ({
                             type="text"
                             icon={<ArrowLeftOutlined />}
                             onClick={() => navigate('/category-selection')}
-                            style={{ color: '#08457E', fontWeight: 600, padding: 0, marginBottom: '16px' }}
+                            style={{ color: 'var(--text-primary)', fontWeight: 600, padding: 0, marginBottom: '16px' }}
                         >
                             Back to Category Selection
                         </Button>
                         <div>
-                            <Title level={2} style={{ color: '#08457E', margin: 0, fontWeight: 700 }}>
+                            <Title level={2} style={{ color: 'var(--text-primary)', margin: 0, fontWeight: 800 }}>
                                 {category} → {subcategory} {isVehicle ? `→ ${ownership}` : ''}
                             </Title>
                             <Text type="secondary" style={{ fontSize: '16px' }}>
@@ -1199,7 +1190,7 @@ const AnalysisForm = ({
 
                         {/* Global Identity & Income Details */}
                         <Card
-                            title={<Space><GlobalOutlined style={{ color: '#5B92E5' }} /> <span>GLOBAL INCOME</span></Space>}
+                            title={<Space><GlobalOutlined style={{ color: 'var(--accent-secondary)' }} /> <span>GLOBAL INCOME</span></Space>}
                             style={cardStyle}
                         >
                             <Row gutter={[24, 0]}>
@@ -1233,7 +1224,7 @@ const AnalysisForm = ({
 
                         {/* Deductions */}
                         <Card
-                            title={<Space><SafetyOutlined style={{ color: '#5B92E5' }} /> <span>DEDUCTIONS (Old Regime Only)</span></Space>}
+                            title={<Space><SafetyOutlined style={{ color: 'var(--accent-secondary)' }} /> <span>DEDUCTIONS (Old Regime Only)</span></Space>}
                             style={cardStyle}
                         >
                             <Row gutter={[24, 0]}>
@@ -1279,11 +1270,11 @@ const AnalysisForm = ({
                         </Card>
 
                         {/* Regime Preference */}
-                        <Card style={{ ...cardStyle, background: '#08457E' }} bodyStyle={{ padding: '32px' }}>
+                        <Card style={{ ...cardStyle, background: 'var(--accent-primary)' }} bodyStyle={{ padding: '32px' }}>
                             <Row align="middle" justify="space-between" gutter={[16, 16]}>
                                 <Col xs={24} md={16}>
-                                    <Text style={{ color: '#FFFFFF', fontSize: '18px', fontWeight: 600 }}>Tax Regime Preference</Text>
-                                    <div style={{ color: '#CCF1FF', fontSize: '13px', marginTop: '4px' }}>Our engine will recommend the best option based on your inputs.</div>
+                                    <Text style={{ color: 'var(--bg-card)', fontSize: '18px', fontWeight: 600 }}>Tax Regime Preference</Text>
+                                    <div style={{ color: 'var(--text-secondary)', fontSize: '13px', marginTop: '4px' }}>Our engine will recommend the best option based on your inputs.</div>
                                 </Col>
                                 <Col xs={24} md={8} style={{ textAlign: 'right' }}>
                                     <Form.Item name="regimePreference" noStyle>
@@ -1305,13 +1296,12 @@ const AnalysisForm = ({
                                 size="large"
                                 disabled={!isFormValid}
                                 icon={<ArrowRightOutlined />}
+                                className="btn-primary"
                                 style={{
                                     height: '64px',
                                     padding: '0 64px',
                                     fontSize: '20px',
                                     borderRadius: '50px',
-                                    fontWeight: 700,
-                                    boxShadow: isFormValid ? '0 8px 30px rgba(91, 146, 229, 0.3)' : 'none',
                                     opacity: isFormValid ? 1 : 0.6
                                 }}
                             >
@@ -1326,7 +1316,7 @@ const AnalysisForm = ({
                     </Form>
 
                     <div style={{ marginTop: '60px', textAlign: 'center', marginBottom: '40px' }}>
-                        <Text style={{ color: '#9CA3AF', fontSize: '13px' }}>
+                        <Text style={{ color: 'var(--text-secondary)', fontSize: '13px' }}>
                             Private & Secure Analysis · Encrypted Data Transmission
                         </Text>
                     </div>
@@ -1335,11 +1325,11 @@ const AnalysisForm = ({
             <style>
                 {`
                     .ant-input-number-input { height: 48px !important; }
-                    .ant-form-item-label label { font-weight: 600; color: #08457E; }
-                    .ant-radio-button-wrapper-checked { background: #5B92E5 !important; border-color: #5B92E5 !important; }
+                    .ant-form-item-label label { font-weight: 600; color: var(--accent-primary); }
+                    .ant-radio-button-wrapper-checked { background: var(--accent-secondary) !important; border-color: var(--accent-secondary) !important; }
                 `}
             </style>
-        </ConfigProvider>
+        </>
     );
 };
 

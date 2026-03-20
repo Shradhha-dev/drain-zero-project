@@ -1,5 +1,4 @@
-import React from 'react';
-import { ConfigProvider, Button, Card, Typography, Space, Layout, Form, Input, Divider } from 'antd';
+import { Button, Card, Typography, Space, Layout, Form, Input, Divider } from 'antd';
 import { GoogleOutlined, ArrowLeftOutlined } from '@ant-design/icons';
 import { useNavigate, Link } from 'react-router-dom';
 
@@ -9,42 +8,14 @@ const LoginPage = () => {
     const navigate = useNavigate();
 
     return (
-        <ConfigProvider
-            theme={{
-                token: {
-                    colorPrimary: '#5B92E5', // United Nations Blue
-                    borderRadius: 12,
-                    colorText: '#1F2937', // Text Primary
-                    fontFamily: "'Inter', sans-serif",
-                },
-                components: {
-                    Button: {
-                        controlHeightLG: 52,
-                        fontWeight: 600,
-                        borderRadius: 12,
-                    },
-                    Input: {
-                        colorBgContainer: '#EEF3FA', // Input Background
-                        colorBorder: '#B8C8E6', // Input Border
-                        borderRadius: 12,
-                        controlHeight: 48,
-                    },
-                    Card: {
-                        paddingLG: 40,
-                        borderRadiusLG: 24,
-                        boxShadow: '0 8px 30px rgba(8, 76, 141, 0.08)',
-                    }
-                },
-            }}
-        >
-            <Layout style={{
-                minHeight: '100vh',
-                background: '#DCE6F5',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '24px'
-            }}>
+        <Layout style={{
+            minHeight: '100vh',
+            background: 'var(--bg-page)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '24px'
+        }}>
                 <Card
                     style={{
                         maxWidth: 480,
@@ -57,22 +28,22 @@ const LoginPage = () => {
                             <ArrowLeftOutlined
                                 onClick={() => navigate('/')}
                                 style={{
-                                    fontSize: 22,
-                                    color: '#084C8D',
-                                    cursor: 'pointer',
+                                     fontSize: 22,
+                                     color: 'var(--text-primary)', // Consistent Black dominance
+                                     cursor: 'pointer',
                                 }}
                             />
                             <Title level={2} style={{
                                 margin: 0,
-                                fontWeight: 700,
-                                color: '#084C8D' // Dark Cerulean
+                                fontWeight: 800,
+                                color: 'var(--text-primary)' // Pure Black
                             }}>
                                 Login
                             </Title>
                         </Space>
                         <Text style={{
                             fontSize: 16,
-                            color: '#6B7280', // Text Secondary
+                            color: 'var(--text-secondary)', // Deep Steel Gray
                             display: 'block'
                         }}>
                             Access your personal fiscal optimization dashboard
@@ -81,12 +52,13 @@ const LoginPage = () => {
 
                     <div style={{ marginTop: 24 }}>
                         <Button
+                            type="primary"
                             block
                             size="large"
                             icon={<GoogleOutlined />}
                             style={{
-                                borderColor: '#B8C8E6',
-                                color: '#1F2937'
+                                height: 52,
+                                fontSize: 16
                             }}
                             onClick={() => {
                                 // Simulate Google Auth
@@ -98,14 +70,13 @@ const LoginPage = () => {
                         </Button>
 
                         <div style={{ textAlign: 'center', marginTop: 32 }}>
-                            <Text style={{ color: '#6B7280' }}>
-                                New here? <Link to="/signup" style={{ color: '#5B92E5', fontWeight: 600 }}>Create account</Link>
+                            <Text style={{ color: 'var(--text-secondary)' }}>
+                                New here? <Link to="/signup" style={{ color: 'var(--accent-secondary)', fontWeight: 600 }}>Create account</Link>
                             </Text>
                         </div>
                     </div>
                 </Card>
             </Layout>
-        </ConfigProvider>
     );
 };
 

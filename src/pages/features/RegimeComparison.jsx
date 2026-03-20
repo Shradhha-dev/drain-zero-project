@@ -16,7 +16,7 @@ const RegimeComparison = () => {
         return (
             <div style={{ padding: '40px', textAlign: 'center' }}>
                 <Title level={2}>Regime Comparison</Title>
-                <div style={{ padding: '60px', background: '#fff', borderRadius: '24px', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
+                <div style={{ padding: '60px', background: 'var(--bg-card)', borderRadius: '24px', boxShadow: 'var(--card-shadow)' }}>
                     <p>Analysis data not found. Please complete the form first.</p>
                     <Button type="primary" onClick={() => navigate('/category-selection')}>Start New Analysis</Button>
                 </div>
@@ -178,117 +178,107 @@ const RegimeComparison = () => {
     ];
 
     return (
-        <ConfigProvider
-            theme={{
-                token: {
-                    colorPrimary: '#5B92E5',
-                    borderRadius: 20,
-                    fontFamily: "'Outfit', sans-serif",
-                },
-            }}
-        >
-            <Layout style={{ minHeight: '100vh', background: '#F2F3F4', padding: '40px 24px' }}>
-                <Content style={{ maxWidth: '1000px', margin: '0 auto', width: '100%' }}>
-                    <Button
-                        icon={<ArrowLeftOutlined />}
-                        onClick={() => navigate('/dashboard', { state: location.state })}
-                        style={{ marginBottom: '24px', borderRadius: '12px', fontWeight: 600, color: '#08457E' }}
-                    >
-                        Back to Dashboard
-                    </Button>
+        <Layout style={{ minHeight: '100vh', background: 'var(--bg-page)', padding: '40px 24px' }}>
+            <Content style={{ maxWidth: '1000px', margin: '0 auto', width: '100%' }}>
+                <Button
+                    icon={<ArrowLeftOutlined />}
+                    onClick={() => navigate('/dashboard', { state: location.state })}
+                    style={{ marginBottom: '24px', borderRadius: '30px', fontWeight: 600, color: '#FFFFFF' }}
+                >
+                    Back to Dashboard
+                </Button>
 
-                    <div style={{ marginBottom: '40px' }}>
-                        <Title level={2} style={{ color: '#08457E', fontWeight: 800, marginBottom: '8px' }}>
-                            Regime Comparison Analysis
-                        </Title>
-                        <Paragraph style={{ color: '#6B7280', fontSize: '16px' }}>
-                            FY 2025-26 updated tax slabs applied to your {subcategory} ({ownership}) analysis.
-                        </Paragraph>
-                    </div>
+                <div style={{ marginBottom: '40px' }}>
+                    <Title level={2} style={{ color: 'var(--accent-primary)', fontWeight: 800, marginBottom: '8px' }}>
+                        Regime Comparison Analysis
+                    </Title>
+                    <Paragraph style={{ color: '#FFFFFF', fontSize: '16px' }}>
+                        FY 2025-26 updated tax slabs applied to your {subcategory} ({ownership}) analysis.
+                    </Paragraph>
+                </div>
 
-                    <Row gutter={[24, 24]} style={{ marginBottom: '40px' }}>
-                        <Col xs={24} md={8}>
-                            <Card style={{ borderRadius: '24px', textAlign: 'center', height: '100%', border: 'none' }}>
-                                <Statistic title="Old Regime Tax" value={taxOld} prefix="₹" precision={0} valueStyle={{ color: '#6B7280' }} />
-                            </Card>
-                        </Col>
-                        <Col xs={24} md={8}>
-                            <Card style={{ borderRadius: '24px', textAlign: 'center', height: '100%', border: '2px solid #5B92E5', background: '#F0F7FF' }}>
-                                <Statistic title="New Regime Tax" value={taxNew} prefix="₹" precision={0} valueStyle={{ color: '#08457E', fontWeight: 800 }} />
-                                {bestRegime === 'New Regime' && <Tag color="blue" style={{ marginTop: '8px', borderRadius: '4px' }}>Recommended</Tag>}
-                            </Card>
-                        </Col>
-                        <Col xs={24} md={8}>
-                            <Card style={{ borderRadius: '24px', textAlign: 'center', height: '100%', background: '#08457E' }}>
-                                <Statistic
-                                    title={<span style={{ color: '#CCF1FF' }}>Annual Potential Savings</span>}
-                                    value={savings}
-                                    prefix="₹"
-                                    precision={0}
-                                    valueStyle={{ color: '#FFFFFF', fontWeight: 800 }}
-                                />
-                                <div style={{ color: '#10B981', fontWeight: 600, marginTop: '8px' }}>
-                                    <CheckCircleFilled /> Switch to {bestRegime}
-                                </div>
-                            </Card>
-                        </Col>
-                    </Row>
+                <Row gutter={[24, 24]} style={{ marginBottom: '40px' }}>
+                    <Col xs={24} md={8}>
+                        <Card style={{ borderRadius: '24px', textAlign: 'center', height: '100%', border: 'none' }}>
+                            <Statistic title="Old Regime Tax" value={taxOld} prefix="₹" precision={0} valueStyle={{ color: '#FFFFFF' }} />
+                        </Card>
+                    </Col>
+                    <Col xs={24} md={8}>
+                        <Card style={{ borderRadius: '24px', textAlign: 'center', height: '100%', border: '2px solid var(--accent-primary)', background: 'rgba(59, 130, 246, 0.1)' }}>
+                            <Statistic title="New Regime Tax" value={taxNew} prefix="₹" precision={0} valueStyle={{ color: 'var(--accent-primary)', fontWeight: 800 }} />
+                            {bestRegime === 'New Regime' && <Tag color="blue" style={{ marginTop: '8px', borderRadius: '4px' }}>Recommended</Tag>}
+                        </Card>
+                    </Col>
+                    <Col xs={24} md={8}>
+                        <Card style={{ borderRadius: '24px', textAlign: 'center', height: '100%', background: 'var(--accent-primary)' }}>
+                            <Statistic
+                                title={<span style={{ color: '#FFFFFF' }}>Annual Potential Savings</span>}
+                                value={savings}
+                                prefix="₹"
+                                precision={0}
+                                valueStyle={{ color: '#FFFFFF', fontWeight: 800 }}
+                            />
+                            <div style={{ color: 'var(--success)', fontWeight: 600, marginTop: '8px' }}>
+                                <CheckCircleFilled /> Switch to {bestRegime}
+                            </div>
+                        </Card>
+                    </Col>
+                </Row>
 
-                    {savings === 0 && (
-                        <Alert
-                            message="Both regimes result in zero tax for your current income level. You can choose either."
-                            type="success"
-                            showIcon
-                            style={{ marginBottom: '24px', borderRadius: '16px' }}
-                        />
-                    )}
+                {savings === 0 && (
+                    <Alert
+                        message="Both regimes result in zero tax for your current income level. You can choose either."
+                        type="success"
+                        showIcon
+                        style={{ marginBottom: '24px', borderRadius: '16px' }}
+                    />
+                )}
 
-                    <Card
-                        title={<Space><SwapOutlined /> Detailed Tax Computation Table</Space>}
-                        style={{ borderRadius: '24px', border: 'none', boxShadow: '0 4px 20px rgba(0,0,0,0.03)' }}
-                    >
-                        <Table
-                            columns={columns}
-                            dataSource={data}
-                            pagination={false}
-                            style={{ borderRadius: '16px', overflow: 'hidden' }}
-                        />
+                <Card
+                    title={<Space style={{ color: '#FFFFFF' }}><SwapOutlined /> Detailed Tax Computation Table</Space>}
+                    style={{ borderRadius: '24px', border: 'none', boxShadow: 'var(--card-shadow)' }}
+                >
+                    <Table
+                        columns={columns}
+                        dataSource={data}
+                        pagination={false}
+                        style={{ borderRadius: '16px', overflow: 'hidden' }}
+                    />
 
-                        <div style={{ marginTop: '32px', padding: '24px', backgroundColor: '#F9FAFB', borderRadius: '16px' }}>
-                            <Title level={4} style={{ color: '#08457E', marginBottom: '16px' }}>Analysis Insights</Title>
-                            <Row gutter={[24, 16]}>
+                    <div style={{ marginTop: '32px', padding: '24px', backgroundColor: 'var(--bg-page)', borderRadius: '16px' }}>
+                        <Title level={4} style={{ color: 'var(--accent-primary)', marginBottom: '16px' }}>Analysis Insights</Title>
+                        <Row gutter={[24, 16]}>
+                            <Col xs={24} md={12}>
+                                <Space align="start">
+                                    <InfoCircleOutlined style={{ color: 'var(--accent-secondary)', marginTop: '4px' }} />
+                                    <Text style={{ color: '#FFFFFF' }}><strong>Best Option:</strong> {bestRegime} saves you ₹{Math.round(savings).toLocaleString()} annually due to your specific investment profile.</Text>
+                                </Space>
+                            </Col>
+                            {formData.isEV && (
                                 <Col xs={24} md={12}>
                                     <Space align="start">
-                                        <InfoCircleOutlined style={{ color: '#5B92E5', marginTop: '4px' }} />
-                                        <Text><strong>Best Option:</strong> {bestRegime} saves you ₹{Math.round(savings).toLocaleString()} annually due to your specific investment profile.</Text>
+                                        <InfoCircleOutlined style={{ color: 'var(--success)', marginTop: '4px' }} />
+                                        <Text style={{ color: '#FFFFFF' }}><strong>EV Benefit:</strong> Your Electric Vehicle provides an additional interest deduction under 80EEB in the Old Regime.</Text>
                                     </Space>
                                 </Col>
-                                {formData.isEV && (
-                                    <Col xs={24} md={12}>
-                                        <Space align="start">
-                                            <InfoCircleOutlined style={{ color: '#10B981', marginTop: '4px' }} />
-                                            <Text><strong>EV Benefit:</strong> Your Electric Vehicle provides an additional interest deduction under 80EEB in the Old Regime.</Text>
-                                        </Space>
-                                    </Col>
-                                )}
-                                {category === 'Stocks' && stockTax > 0 && (
-                                    <Col xs={24} md={12}>
-                                        <Space align="start">
-                                            <InfoCircleOutlined style={{ color: '#F59E0B', marginTop: '4px' }} />
-                                            <Text><strong>Investments:</strong> Capital gains are taxed identically in both regimes, but slab income benefits differ.</Text>
-                                        </Space>
-                                    </Col>
-                                )}
-                            </Row>
-                        </div>
-                    </Card>
-
-                    <div style={{ marginTop: '40px' }}>
-                        <TaxAssistantChatbot />
+                            )}
+                            {category === 'Stocks' && capitalGainsTax > 0 && (
+                                <Col xs={24} md={12}>
+                                    <Space align="start">
+                                        <InfoCircleOutlined style={{ color: 'var(--accent-secondary)', marginTop: '4px' }} />
+                                        <Text style={{ color: '#FFFFFF' }}><strong>Investments:</strong> Capital gains are taxed identically in both regimes, but slab income benefits differ.</Text>
+                                    </Space>
+                                </Col>
+                            )}
+                        </Row>
                     </div>
-                </Content>
-            </Layout>
-        </ConfigProvider>
+                </Card>
+
+                <div style={{ marginTop: '40px' }}>
+                    <TaxAssistantChatbot />
+                </div>
+            </Content>
+        </Layout>
     );
 };
 

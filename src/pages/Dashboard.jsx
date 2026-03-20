@@ -6,7 +6,6 @@ import {
     Col,
     Space,
     Button,
-    ConfigProvider,
     Tag,
     message,
     Tooltip
@@ -46,7 +45,7 @@ const Dashboard = () => {
             title: 'Regime Comparison',
             description: 'Compare Old vs New tax regime and show the best option.',
             icon: <SwapOutlined />,
-            iconColor: '#5B92E5',
+            iconColor: 'var(--accent-secondary)',
             path: '/feature/regime-comparison'
         },
         {
@@ -54,7 +53,7 @@ const Dashboard = () => {
             title: 'Tax Leakage Detection',
             description: 'Identify missed deductions and hidden tax-saving opportunities.',
             icon: <SearchOutlined />,
-            iconColor: '#F59E0B',
+            iconColor: 'var(--warning)',
             path: '/feature/tax-leakage'
         },
         {
@@ -62,7 +61,7 @@ const Dashboard = () => {
             title: 'Tax Health Score',
             description: 'Show overall tax optimization score.',
             icon: <LineChartOutlined />,
-            iconColor: '#10B981',
+            iconColor: 'var(--success)',
             path: '/feature/tax-health'
         },
         {
@@ -70,7 +69,7 @@ const Dashboard = () => {
             title: 'Actionable Recommendations',
             description: 'Provide clear steps to reduce tax.',
             icon: <CheckCircleOutlined />,
-            iconColor: '#3B82F6',
+            iconColor: 'var(--accent-primary)',
             path: '/feature/recommendations'
         },
         {
@@ -78,7 +77,7 @@ const Dashboard = () => {
             title: 'Salary Structure Analysis',
             description: 'Analyze salary structure for better tax efficiency.',
             icon: <WalletOutlined />,
-            iconColor: '#8B5CF6',
+            iconColor: 'var(--accent-secondary)',
             path: '/feature/salary-analysis'
         }
     ];
@@ -112,22 +111,13 @@ const Dashboard = () => {
     };
 
     return (
-        <ConfigProvider
-            theme={{
-                token: {
-                    colorPrimary: '#5B92E5',
-                    borderRadius: 20,
-                    fontFamily: "'Outfit', sans-serif",
-                },
-            }}
-        >
-            <Layout style={{ minHeight: '100vh', background: '#F2F3F4', padding: '40px 24px' }}>
+        <Layout style={{ minHeight: '100vh', background: 'var(--bg-page)', padding: '40px 24px' }}>
                 <Content style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
 
                     {/* Header */}
                     <div style={{ marginBottom: '48px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '20px' }}>
                         <div>
-                            <Title level={1} style={{ color: '#08457E', margin: 0, fontWeight: 800 }}>
+                            <Title level={1} style={{ color: 'var(--text-primary)', margin: 0, fontWeight: 800 }}>
                                 Strategy Dashboard
                             </Title>
                             <Space size={12} style={{ marginTop: '8px' }}>
@@ -149,14 +139,20 @@ const Dashboard = () => {
                                 type="primary"
                                 icon={<SyncOutlined />}
                                 onClick={handleNewAnalysis}
-                                style={{ height: '48px', borderRadius: '12px' }}
+                                className="btn-primary"
+                                style={{ height: '48px', borderRadius: '30px', fontSize: '15px' }}
                             >
                                 New Analysis
                             </Button>
                             <Button
                                 icon={<LogoutOutlined />}
                                 onClick={handleLogout}
-                                style={{ height: '48px', borderRadius: '12px', color: '#EF4444', borderColor: '#FCA5A5' }}
+                                className="btn-error"
+                                style={{ 
+                                    height: '48px', 
+                                    borderRadius: '30px', 
+                                    fontSize: '15px',
+                                }}
                             >
                                 Logout
                             </Button>
@@ -165,7 +161,7 @@ const Dashboard = () => {
 
                     {/* Feature Cards Grid */}
                     <div style={{ marginBottom: '60px' }}>
-                        <Title level={4} style={{ color: '#08457E', marginBottom: '24px', opacity: 0.8, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px' }}>
+                        <Title level={4} style={{ color: 'var(--accent-primary)', marginBottom: '24px', opacity: 0.8, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px' }}>
                             Detailed Analysis Features
                         </Title>
                         <Row gutter={[24, 24]}>
@@ -175,7 +171,7 @@ const Dashboard = () => {
                                         onClick={() => handleCardClick(feat.path)}
                                         className="feature-card"
                                         style={{
-                                            background: '#FFFFFF',
+                                            background: 'var(--bg-card)',
                                             borderRadius: '24px',
                                             padding: '40px',
                                             cursor: 'pointer',
@@ -183,7 +179,7 @@ const Dashboard = () => {
                                             display: 'flex',
                                             flexDirection: 'column',
                                             justifyContent: 'space-between',
-                                            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)',
+                                            boxShadow: 'var(--card-shadow)',
                                             transition: 'all 0.3s ease',
                                             position: 'relative'
                                         }}
@@ -203,10 +199,10 @@ const Dashboard = () => {
                                             }}>
                                                 {feat.icon}
                                             </div>
-                                            <Title level={4} style={{ color: '#08457E', margin: '0 0 16px 0', fontWeight: 700 }}>
+                                            <Title level={4} style={{ color: 'var(--accent-primary)', margin: '0 0 16px 0', fontWeight: 700 }}>
                                                 {feat.title}
                                             </Title>
-                                            <Paragraph style={{ color: '#6B7280', fontSize: '15px', lineHeight: 1.6 }}>
+                                            <Paragraph style={{ color: 'var(--text-secondary)', fontSize: '15px', lineHeight: 1.6 }}>
                                                 {feat.description}
                                             </Paragraph>
                                         </div>
@@ -215,7 +211,7 @@ const Dashboard = () => {
                                                 <Button
                                                     type="text"
                                                     icon={<ArrowRightOutlined />}
-                                                    style={{ color: '#5B92E5', fontSize: '20px' }}
+                                                    style={{ color: 'var(--accent-secondary)', fontSize: '20px' }}
                                                 />
                                             </Tooltip>
                                         </div>
@@ -229,15 +225,15 @@ const Dashboard = () => {
                     <div style={{ textAlign: 'center' }}>
                         <div style={{
                             borderRadius: '32px',
-                            background: '#08457E',
+                            background: 'var(--accent-primary)',
                             padding: '60px 40px',
                             display: 'inline-block',
                             width: '100%',
-                            boxShadow: '0 20px 40px rgba(8, 69, 126, 0.15)'
+                            boxShadow: 'var(--card-shadow)'
                         }}>
                             <Space direction="vertical" size={24} style={{ width: '100%' }}>
                                 <Title level={2} style={{ color: '#FFFFFF', margin: 0, fontWeight: 700 }}>Ready to Optimize?</Title>
-                                <Paragraph style={{ color: '#CCF1FF', fontSize: '18px', maxWidth: '600px', margin: '0 auto' }}>
+                                <Paragraph style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', maxWidth: '600px', margin: '0 auto' }}>
                                     Get the complete technical breakdown of your tax strategy, including regime comparison and leakage detection in one professional document.
                                 </Paragraph>
                                 <Button
@@ -250,11 +246,11 @@ const Dashboard = () => {
                                         padding: '0 64px',
                                         borderRadius: '50px',
                                         fontSize: '20px',
-                                        background: '#5B92E5',
+                                        background: 'var(--accent-secondary)',
                                         border: 'none',
                                         fontWeight: 700,
                                         marginTop: '12px',
-                                        boxShadow: '0 10px 20px rgba(91, 146, 229, 0.3)'
+                                        boxShadow: 'var(--card-shadow)'
                                     }}
                                 >
                                     Download Analysis Report
@@ -265,9 +261,9 @@ const Dashboard = () => {
 
                     {/* Security Note */}
                     <div style={{ marginTop: '80px', textAlign: 'center' }}>
-                        <Space style={{ background: '#FFFFFF', padding: '16px 32px', borderRadius: '50px', boxShadow: '0 4px 20px rgba(0,0,0,0.04)' }}>
-                            <LockFilled style={{ color: '#10B981', fontSize: '20px' }} />
-                            <Text style={{ fontWeight: 600, color: '#08457E', fontSize: '15px' }}>
+                        <Space style={{ background: 'var(--bg-card)', padding: '16px 32px', borderRadius: '50px', boxShadow: 'var(--card-shadow)' }}>
+                            <LockFilled style={{ color: 'var(--success)', fontSize: '20px' }} />
+                            <Text style={{ fontWeight: 600, color: 'var(--accent-primary)', fontSize: '15px' }}>
                                 Your data is secure and private. Analysis is visible only to you.
                             </Text>
                         </Space>
@@ -275,10 +271,10 @@ const Dashboard = () => {
 
                     <style>
                         {`
-                            .feature-card:hover {
+                        .feature-card:hover {
                                 transform: translateY(-10px);
-                                box-shadow: 0 20px 40px rgba(8, 69, 126, 0.08) !important;
-                                background: #F8FAFF !important;
+                                box-shadow: var(--card-shadow) !important;
+                                background: var(--bg-card) !important;
                             }
                             @media (max-width: 768px) {
                                 .feature-card { padding: 30px !important; }
@@ -287,7 +283,6 @@ const Dashboard = () => {
                     </style>
                 </Content>
             </Layout>
-        </ConfigProvider>
     );
 };
 

@@ -1,17 +1,13 @@
-/* Drain Zero Design Tokens */
+/* Clean Finance Design Tokens */
 :root {
-    --color-background: #F2F3F4;
-    /* Anti Flash White */
-    --color-primary: #5B92E5;
-    /* United Nations Blue */
-    --color-accent: #08457E;
-    /* Dark Cerulean */
-    --color-surface: #FFFFFF;
-    --color-text-title: #08457E;
-    /* Dark Cerulean */
-    --color-text-body: #4B5563;
+  --color-background: var(--bg-page);
+  --color-primary: var(--accent-primary);
+  --color-accent: var(--accent-secondary);
+  --color-surface: var(--bg-card);
+  --color-text-title: var(--text-primary);
+  --color-text-body: var(--text-secondary);
 
-    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.04);
-    --border-radius-lg: 24px;
-    --border-radius-md: 12px;
+  --shadow-soft: var(--card-shadow);
+  --border-radius-lg: 24px;
+  --border-radius-md: 10px;
 }

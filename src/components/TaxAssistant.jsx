@@ -41,19 +41,19 @@ const TaxAssistant = () => {
                 <Card
                     title={
                         <Space style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-                            <Text strong style={{ color: '#08457E' }}>Drain Zero Tax Assistant</Text>
+                            <Text strong style={{ color: 'var(--accent-primary)' }}>Drain Zero Tax Assistant</Text>
                             <Button type="text" icon={<CloseOutlined />} onClick={() => setIsOpen(false)} style={{ padding: 0 }} />
                         </Space>
                     }
                     bodyStyle={{ padding: '16px', display: 'flex', flexDirection: 'column', height: '400px' }}
-                    style={{ width: 350, borderRadius: 16, boxShadow: '0 8px 30px rgba(8, 69, 126, 0.2)' }}
+                    style={{ width: 350, borderRadius: 10, boxShadow: 'var(--card-shadow)' }}
                 >
                     <div style={{ flex: 1, overflowY: 'auto', marginBottom: 16, display: 'flex', flexDirection: 'column', gap: '12px' }}>
                         {messages.map((msg, index) => (
                             <div key={index} style={{
                                 alignSelf: msg.role === 'user' ? 'flex-end' : 'flex-start',
-                                background: msg.role === 'user' ? '#5B92E5' : '#F2F3F4',
-                                color: msg.role === 'user' ? '#FFF' : '#1F2937',
+                                background: msg.role === 'user' ? 'var(--accent-secondary)' : 'var(--bg-page)',
+                                color: msg.role === 'user' ? 'var(--bg-card)' : 'var(--text-primary)',
                                 padding: '10px 14px',
                                 borderRadius: '12px',
                                 maxWidth: '85%',
@@ -62,9 +62,9 @@ const TaxAssistant = () => {
                                 borderBottomLeftRadius: msg.role === 'bot' ? '4px' : '12px',
                             }}>
                                 <Space size={8} align="start">
-                                    {msg.role === 'bot' && <RobotOutlined style={{ fontSize: 16, marginTop: 4, color: '#084C8D' }} />}
+                                    {msg.role === 'bot' && <RobotOutlined style={{ fontSize: 16, marginTop: 4, color: 'var(--accent-primary)' }} />}
                                     <Text style={{ color: 'inherit', display: 'block' }}>{msg.text}</Text>
-                                    {msg.role === 'user' && <UserOutlined style={{ fontSize: 16, marginTop: 4, color: '#FFF' }} />}
+                                    {msg.role === 'user' && <UserOutlined style={{ fontSize: 16, marginTop: 4, color: 'var(--bg-card)' }} />}
                                 </Space>
                             </div>
                         ))}
@@ -81,7 +81,7 @@ const TaxAssistant = () => {
                             type="primary"
                             icon={<SendOutlined />}
                             onClick={handleSend}
-                            style={{ borderRadius: '0 24px 24px 0', background: '#5B92E5' }}
+                            style={{ borderRadius: '0 24px 24px 0', background: 'var(--accent-secondary)' }}
                         />
                     </Space.Compact>
                 </Card>
@@ -94,10 +94,10 @@ const TaxAssistant = () => {
                     onClick={() => setIsOpen(true)}
                     style={{
                         height: 56,
-                        boxShadow: '0 8px 24px rgba(91, 146, 229, 0.4)',
+                        boxShadow: 'var(--card-shadow)',
                         fontSize: 16,
                         fontWeight: 600,
-                        background: '#08457E'
+                        background: 'var(--accent-primary)'
                     }}
                 >
                     💬 Tax Assistant

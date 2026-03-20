@@ -15,7 +15,7 @@ const TaxLeakage = () => {
         return (
             <div style={{ padding: '40px', textAlign: 'center' }}>
                 <Title level={2}>Tax Leakage Detection</Title>
-                <div style={{ padding: '60px', background: '#fff', borderRadius: '24px', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
+                <div style={{ padding: '60px', background: 'var(--bg-card)', borderRadius: '24px', boxShadow: 'var(--card-shadow)' }}>
                     <p>Analysis data not available. Please enter your details first.</p>
                     <Button type="primary" onClick={() => navigate('/category-selection')}>Begin Analysis</Button>
                 </div>
@@ -164,26 +164,26 @@ const TaxLeakage = () => {
         <ConfigProvider
             theme={{
                 token: {
-                    colorPrimary: '#5B92E5',
-                    borderRadius: 20,
+                    colorPrimary: '#1B3A6B',
+                    borderRadius: 10,
                     fontFamily: "'Outfit', sans-serif",
                 },
             }}
         >
-            <Layout style={{ minHeight: '100vh', background: '#F2F3F4', padding: '40px 24px' }}>
+            <Layout style={{ minHeight: '100vh', background: 'var(--bg-page)', padding: '40px 24px' }}>
                 <Content style={{ maxWidth: '1000px', margin: '0 auto', width: '100%' }}>
                     <Button
                         icon={<ArrowLeftOutlined />}
                         onClick={() => navigate('/dashboard', { state: location.state })}
-                        style={{ marginBottom: '24px', borderRadius: '12px', fontWeight: 600, color: '#08457E' }}
+                        style={{ marginBottom: '24px', borderRadius: '12px', fontWeight: 600, color: 'var(--accent-primary)' }}
                     >
                         Back to Dashboard
                     </Button>
 
-                    <Title level={2} style={{ color: '#08457E', fontWeight: 800 }}>
+                    <Title level={2} style={{ color: 'var(--accent-primary)', fontWeight: 800 }}>
                         Tax Leakage Detection
                     </Title>
-                    <Paragraph style={{ color: '#6B7280', fontSize: '16px', marginBottom: '40px' }}>
+                    <Paragraph style={{ color: 'var(--text-secondary)', fontSize: '16px', marginBottom: '40px' }}>
                         Identifying efficiency gaps where you are paying more tax than legally necessary.
                     </Paragraph>
 
@@ -197,15 +197,15 @@ const TaxLeakage = () => {
                                     <Col xs={24} md={12}>
                                         <Space direction="vertical" size={12}>
                                             <Tag color="red" style={{ fontWeight: 700, borderRadius: '4px' }} icon={<WarningOutlined />}>HIGH LEAKAGE FOUND</Tag>
-                                            <Title level={1} style={{ margin: 0, color: '#08457E', fontWeight: 800 }}>
+                                            <Title level={1} style={{ margin: 0, color: 'var(--accent-primary)', fontWeight: 800 }}>
                                                 ₹{totalLeakage.toLocaleString()}
                                             </Title>
-                                            <Text style={{ fontSize: '18px', color: '#4B5563' }}>Total Estimated Annual Tax Leakage</Text>
+                                            <Text style={{ fontSize: '18px', color: 'var(--text-secondary)' }}>Total Estimated Annual Tax Leakage</Text>
                                         </Space>
                                     </Col>
                                     <Col xs={24} md={12} style={{ textAlign: 'right' }}>
-                                        <div style={{ padding: '24px', background: '#FFFFFF', borderRadius: '20px', display: 'inline-block', minWidth: '240px', boxShadow: '0 4px 15px rgba(239, 68, 68, 0.05)' }}>
-                                            <Statistic title={<span style={{ color: '#08457E' }}>Optimization Potential</span>} value={88} suffix="%" valueStyle={{ color: '#EF4444', fontWeight: 800 }} />
+                                        <div style={{ padding: '24px', background: 'var(--bg-card)', borderRadius: '20px', display: 'inline-block', minWidth: '240px', boxShadow: 'var(--card-shadow)' }}>
+                                            <Statistic title={<span style={{ color: 'var(--accent-primary)' }}>Optimization Potential</span>} value={88} suffix="%" valueStyle={{ color: 'var(--error)', fontWeight: 800 }} />
                                         </div>
                                     </Col>
                                 </Row>
@@ -214,8 +214,8 @@ const TaxLeakage = () => {
                     </Row>
 
                     <Card
-                        title={<Space><InfoCircleFilled style={{ color: '#5B92E5' }} /> <span>Leakage Breakdown</span></Space>}
-                        style={{ borderRadius: '24px', border: 'none', boxShadow: '0 4px 20px rgba(0,0,0,0.03)' }}
+                        title={<Space><InfoCircleFilled style={{ color: 'var(--accent-secondary)' }} /> <span>Leakage Breakdown</span></Space>}
+                        style={{ borderRadius: '24px', border: 'none', boxShadow: 'var(--card-shadow)' }}
                     >
                         <List
                             itemLayout="horizontal"
@@ -225,13 +225,13 @@ const TaxLeakage = () => {
                                     <Statistic
                                         value={item.potential}
                                         prefix="₹"
-                                        valueStyle={{ fontSize: '18px', color: '#EF4444', fontWeight: 700 }}
+                                        valueStyle={{ fontSize: '18px', color: 'var(--error)', fontWeight: 700 }}
                                         title={<span style={{ fontSize: '12px' }}>Potential Savings</span>}
                                     />
                                 }>
                                     <List.Item.Meta
-                                        title={<Space><Text strong style={{ fontSize: '18px', color: '#08457E' }}>{item.title}</Text><Tag color="orange" style={{ borderRadius: '4px' }}>{item.tag}</Tag></Space>}
-                                        description={<Text style={{ fontSize: '15px', color: '#6B7280' }}>{item.description}</Text>}
+                                        title={<Space><Text strong style={{ fontSize: '18px', color: 'var(--accent-primary)' }}>{item.title}</Text><Tag color="orange" style={{ borderRadius: '4px' }}>{item.tag}</Tag></Space>}
+                                        description={<Text style={{ fontSize: '15px', color: 'var(--text-secondary)' }}>{item.description}</Text>}
                                     />
                                 </List.Item>
                             )}

@@ -105,21 +105,21 @@ const TaxOptimizationDashboard = () => {
     const cardStyle = {
         borderRadius: '16px',
         border: 'none',
-        boxShadow: '0 4px 20px rgba(8, 76, 141, 0.05)',
+        boxShadow: 'var(--card-shadow)',
         background: '#EEF3FA',
         height: '100%'
     };
 
     const summaryCardStyle = {
         ...cardStyle,
-        background: '#fff',
+        background: 'var(--bg-card)',
         textAlign: 'center'
     };
 
     const featureCards = [
         {
             title: 'Regime Comparison',
-            icon: <LineChartOutlined style={{ color: '#084C8D' }} />,
+            icon: <LineChartOutlined style={{ color: 'var(--accent-primary)' }} />,
             content: (
                 <Space direction="vertical" style={{ width: '100%' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -128,7 +128,7 @@ const TaxOptimizationDashboard = () => {
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                         <Text type="secondary">New Regime</Text>
-                        <Text strong style={{ color: '#5B92E5' }}>₹{dashboardData.liability}</Text>
+                        <Text strong style={{ color: 'var(--accent-secondary)' }}>₹{dashboardData.liability}</Text>
                     </div>
                     <Divider style={{ margin: '12px 0' }} />
                     <div style={{ textAlign: 'center' }}>
@@ -263,7 +263,7 @@ const TaxOptimizationDashboard = () => {
         },
         {
             title: 'Salary Structure Analysis',
-            icon: <SolutionOutlined style={{ color: '#084C8D' }} />,
+            icon: <SolutionOutlined style={{ color: 'var(--accent-primary)' }} />,
             content: (
                 <Space direction="vertical" size={2} style={{ width: '100%' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -291,7 +291,7 @@ const TaxOptimizationDashboard = () => {
         },
         {
             title: 'Secure & Private',
-            icon: <LockOutlined style={{ color: '#5B92E5' }} />,
+            icon: <LockOutlined style={{ color: 'var(--accent-secondary)' }} />,
             content: (
                 <div style={{ textAlign: 'center', padding: '10px 0' }}>
                     <Text type="secondary" style={{ fontSize: '12px' }}>
@@ -301,7 +301,7 @@ const TaxOptimizationDashboard = () => {
             ),
             details: (
                 <div style={{ textAlign: 'center' }}>
-                    <LockOutlined style={{ fontSize: '48px', color: '#5B92E5', marginBottom: '16px' }} />
+                    <LockOutlined style={{ fontSize: '48px', color: 'var(--accent-secondary)', marginBottom: '16px' }} />
                     <Title level={4}>Data Security</Title>
                     <Paragraph>
                         We use bank-grade encryption to ensure your financial data is safe. Drain Zero doesn't share your data with third-party marketers.
@@ -312,13 +312,13 @@ const TaxOptimizationDashboard = () => {
     ];
 
     return (
-        <Layout style={{ minHeight: '100vh', background: '#DCE6F5', padding: '24px' }}>
+        <Layout style={{ minHeight: '100vh', background: 'var(--bg-page)', padding: '24px' }}>
             <Content style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
 
                 {/* Header Section */}
                 <div style={{ marginBottom: '32px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
                     <div>
-                        <Title level={2} style={{ color: '#084C8D', margin: 0 }}>Tax Optimization Dashboard</Title>
+                        <Title level={2} style={{ color: 'var(--accent-primary)', margin: 0 }}>Tax Optimization Dashboard</Title>
                         <Text type="secondary">Strategic Analysis & Savings Planner</Text>
                     </div>
                     <Tag color="geekblue" style={{ borderRadius: '4px', fontSize: '14px', padding: '4px 12px' }}>
@@ -328,7 +328,7 @@ const TaxOptimizationDashboard = () => {
 
                 {/* Scenario Selector */}
                 <div style={{ marginBottom: '32px', textAlign: 'center' }}>
-                    <Text strong style={{ display: 'block', marginBottom: '12px', color: '#084C8D' }}>Select Analysis Scenario:</Text>
+                    <Text strong style={{ display: 'block', marginBottom: '12px', color: 'var(--accent-primary)' }}>Select Analysis Scenario:</Text>
                     <Segmented
                         size="large"
                         value={currentScenario}
@@ -380,7 +380,7 @@ const TaxOptimizationDashboard = () => {
                                 title={
                                     <Space>
                                         {feature.icon}
-                                        <Text strong style={{ color: '#084C8D' }}>{feature.title}</Text>
+                                        <Text strong style={{ color: 'var(--accent-primary)' }}>{feature.title}</Text>
                                     </Space>
                                 }
                                 extra={
@@ -388,7 +388,7 @@ const TaxOptimizationDashboard = () => {
                                         <Button
                                             type="link"
                                             onClick={() => showModal(feature.title, feature.details)}
-                                            style={{ padding: 0, color: '#5B92E5' }}
+                                            style={{ padding: 0, color: 'var(--accent-secondary)' }}
                                         >
                                             View Details
                                         </Button>
@@ -408,7 +408,7 @@ const TaxOptimizationDashboard = () => {
                     onOk={() => setModalVisible(false)}
                     onCancel={() => setModalVisible(false)}
                     footer={[
-                        <Button key="close" type="primary" onClick={() => setModalVisible(false)} style={{ background: '#084C8D', borderRadius: '8px' }}>
+                        <Button key="close" type="primary" onClick={() => setModalVisible(false)} style={{ background: 'var(--accent-primary)', borderRadius: '8px' }}>
                             Got it
                         </Button>
                     ]}

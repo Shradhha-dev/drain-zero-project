@@ -1,5 +1,4 @@
-import React from 'react';
-import { ConfigProvider, Button, Typography, Row, Col, Card, Space } from 'antd';
+import { Button, Typography, Row, Col, Card, Space } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import {
     SwapOutlined,
@@ -44,66 +43,48 @@ const LandingPage = () => {
     const navigate = useNavigate();
 
     return (
-        <ConfigProvider
-            theme={{
-                token: {
-                    colorPrimary: '#5B92E5', // United Nations Blue
-                    colorBgContainer: '#FFFFFF',
-                    borderRadius: 20,
-                    fontFamily: "'Outfit', sans-serif",
-                },
-                components: {
-                    Button: {
-                        borderRadius: 50,
-                        controlHeight: 52,
-                        fontWeight: 600,
-                    }
-                }
-            }}
-        >
-            <div style={{
-                backgroundColor: '#F2F3F4', // Anti Flash White
-                minHeight: '100vh',
-                color: '#4B5563',
-                overflowX: 'hidden'
-            }}>
-                {/* Hero Section */}
-                <section style={{
-                    minHeight: '80vh',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    padding: '80px 24px',
-                    textAlign: 'center',
-                    maxWidth: 1200,
-                    margin: '0 auto'
+                <div style={{
+                    backgroundColor: 'var(--bg-page)',
+                    minHeight: '100vh',
+                    color: '#FFFFFF',
+                    overflowX: 'hidden'
                 }}>
-                    <Space direction="vertical" size={24} align="center">
-                        <Title style={{
-                            color: '#08457E', // Dark Cerulean
-                            fontSize: 'clamp(3.5rem, 10vw, 6rem)',
-                            fontWeight: 800,
-                            margin: 0,
-                            lineHeight: 1.1,
-                            letterSpacing: '-2px'
-                        }}>
-                            Drain Zero
-                        </Title>
-                        <Title level={2} style={{
-                            color: '#08457E',
-                            fontSize: 'clamp(1.5rem, 4vw, 2.75rem)',
-                            fontWeight: 600,
-                            margin: 0,
-                            opacity: 0.9
-                        }}>
-                            Smart Tax Optimization Made Simple
-                        </Title>
+                    {/* Hero Section */}
+                    <section style={{
+                        minHeight: '80vh',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        padding: '80px 24px',
+                        textAlign: 'center',
+                        maxWidth: 1200,
+                        margin: '0 auto'
+                    }}>
+                        <Space direction="vertical" size={24} align="center">
+                            <Title style={{
+                                color: '#FFFFFF',
+                                fontSize: 'clamp(3.5rem, 10vw, 6rem)',
+                                fontWeight: 900,
+                                margin: 0,
+                                lineHeight: 1.1,
+                                letterSpacing: '-2px'
+                            }}>
+                                Drain Zero
+                            </Title>
+                            <Title level={2} style={{
+                                color: '#FFFFFF',
+                                fontSize: 'clamp(1.5rem, 4vw, 2.75rem)',
+                                fontWeight: 700,
+                                margin: 0,
+                            }}>
+                                Smart Tax Optimization Made Simple
+                            </Title>
                         <Paragraph style={{
                             fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
                             maxWidth: 650,
                             margin: '8px auto 0',
-                            color: '#4B5563',
+                            color: 'var(--text-secondary)',
                             lineHeight: 1.6,
                             fontWeight: 400
                         }}>
@@ -115,10 +96,10 @@ const LandingPage = () => {
                                 size="large"
                                 onClick={() => navigate('/login')}
                                 style={{
-                                    width: 180,
+                                    minWidth: 180,
                                     height: 56,
                                     fontSize: 18,
-                                    boxShadow: '0 8px 15px rgba(91, 146, 229, 0.2)'
+                                    boxShadow: 'var(--card-shadow)'
                                 }}
                             >
                                 Login
@@ -127,12 +108,9 @@ const LandingPage = () => {
                                 size="large"
                                 onClick={() => navigate('/signup')}
                                 style={{
-                                    width: 180,
+                                    minWidth: 180,
                                     height: 56,
                                     fontSize: 18,
-                                    color: '#08457E',
-                                    borderColor: '#08457E',
-                                    borderWidth: 2
                                 }}
                             >
                                 Signup
@@ -144,12 +122,12 @@ const LandingPage = () => {
                 {/* Features Section */}
                 <section style={{
                     padding: '100px 24px',
-                    backgroundColor: '#FFFFFF'
+                    backgroundColor: 'var(--bg-card)'
                 }}>
                     <div style={{ maxWidth: 1200, margin: '0 auto' }}>
                         <Title level={2} style={{
                             textAlign: 'center',
-                            color: '#08457E',
+                            color: 'var(--accent-primary)',
                             marginBottom: 80,
                             fontSize: '2.5rem',
                             fontWeight: 700
@@ -163,22 +141,22 @@ const LandingPage = () => {
                                         bordered={false}
                                         style={{
                                             height: '100%',
-                                            borderRadius: 24,
-                                            backgroundColor: '#F2F3F4',
+                                            borderRadius: 10,
+                                            backgroundColor: 'var(--bg-page)',
                                             transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                                         }}
                                         className="feature-card"
                                         bodyStyle={{ padding: 40 }}
                                     >
                                         <div style={{
-                                            color: '#5B92E5',
+                                            color: 'var(--accent-secondary)',
                                             marginBottom: 24,
                                             display: 'inline-flex'
                                         }}>
                                             {feature.icon}
                                         </div>
                                         <Title level={4} style={{
-                                            color: '#08457E',
+                                            color: 'var(--accent-primary)',
                                             marginBottom: 16,
                                             fontSize: '1.5rem',
                                             fontWeight: 700
@@ -186,7 +164,7 @@ const LandingPage = () => {
                                             {feature.title}
                                         </Title>
                                         <Text style={{
-                                            color: '#4B5563',
+                                            color: 'var(--text-secondary)',
                                             fontSize: '1.1rem',
                                             lineHeight: 1.6
                                         }}>
@@ -202,12 +180,11 @@ const LandingPage = () => {
                     {`
                         .feature-card:hover {
                             transform: translateY(-5px);
-                            box-shadow: 0 15px 35px rgba(8, 69, 126, 0.08);
+                            box-shadow: var(--card-shadow);
                         }
                     `}
                 </style>
             </div>
-        </ConfigProvider>
     );
 };
 

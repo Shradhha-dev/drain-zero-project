@@ -1,13 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap');
 
 :root {
+  --bg-page       : #0F172A; /* Dark Slate Blue */
+  --bg-card       : #1E293B; /* Slate 800 */
+
+  --accent-primary: #3B82F6; /* Brighter Blue for Dark Mode */
+  --accent-primary-hover: #60A5FA;
+
+  --accent-secondary: #0D9488; /* Brighter Teal */
+  --accent-secondary-hover: #14B8A6;
+
+  --text-primary  : #FFFFFF;
+  --text-secondary: #F8FAFC;
+
+  --border        : #334155;
+
+  --success       : #10B981;
+  --warning       : #F59E0B;
+  --error         : #EF4444;
+
+  --input-bg      : #1E293B;
+  --card-shadow   : 0 4px 20px rgba(0,0,0,0.4);
+  --font-heading  : 'Playfair Display', serif;
+  --font-body     : 'Outfit', sans-serif;
+
   font-family: 'Outfit', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color: #1F2937;
-  background-color: #F2F3F4;
-  /* Anti Flash White */
+  color: #FFFFFF;
+  background-color: var(--bg-page);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -20,8 +42,237 @@ body {
   display: block;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--bg-page);
+  color: #FFFFFF;
 }
 
 #root {
   width: 100%;
+}
+
+/* Ensure ALL text is white by default as requested */
+* {
+    color: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, .ant-typography h1, .ant-typography h2, .ant-typography h3, .ant-typography h4, .ant-typography h5, .ant-typography h6 {
+    color: #FFFFFF !important;
+}
+
+p, span, a, div, li, td, th, .ant-typography, .ant-btn {
+    color: #FFFFFF;
+}
+
+/* BUT allow Ant Design status colors to override white text */
+.ant-form-item-explain-error, 
+.ant-form-item-explain-warning, 
+.ant-typography-danger, 
+.ant-typography-success,
+.ant-typography-warning {
+    color: inherit !important; /* This lets the parent's status color win */
+}
+
+/* Special icons that should keep their color */
+.anticon {
+    color: inherit !important;
+}
+
+
+/* 4 REUSABLE BUTTON CLASSES */
+.btn-primary {
+  background: var(--accent-primary) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-radius: 30px !important;
+  padding: 12px 32px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  font-size: 16px !important;
+  box-shadow: 0 4px 12px rgba(27, 58, 107, 0.15) !important;
+}
+
+.btn-primary:hover {
+  background: var(--accent-primary-hover) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(27, 58, 107, 0.2) !important;
+  color: #FFFFFF !important;
+}
+
+.btn-secondary {
+  background: var(--accent-secondary) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-radius: 30px !important;
+  padding: 12px 32px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  font-size: 16px !important;
+}
+
+.btn-secondary:hover {
+  background: var(--accent-secondary-hover) !important;
+  color: #FFFFFF !important;
+}
+
+.btn-error {
+  background: var(--error) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-radius: 30px !important;
+  padding: 12px 32px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+.btn-error:hover {
+  background: #d32f2f !important; /* Darker red */
+}
+
+/* ANTD Global Overrides */
+.ant-btn {
+  border-radius: 30px !important;
+  font-weight: 600 !important;
+  height: auto !important;
+  padding: 12px 32px !important;
+  transition: all 0.3s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.ant-btn-primary {
+  background: var(--accent-primary) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(27, 58, 107, 0.15) !important;
+}
+
+.ant-btn-primary:hover, .ant-btn-primary:focus {
+  background: var(--accent-primary-hover) !important;
+  color: #FFFFFF !important;
+  transform: translateY(-1px);
+}
+
+.ant-btn-default, .ant-btn-dashed {
+  background: var(--accent-secondary) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+}
+
+.ant-btn-default:hover, .ant-btn-dashed:hover {
+  background: var(--accent-secondary-hover) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+}
+
+/* 5 Text Styling */
+h1, h2, h3, h4, h5, h6, .ant-typography h1, .ant-typography h2, .ant-typography h3, .ant-typography h4, .ant-typography h5, .ant-typography h6 {
+  color: #FFFFFF !important;
+  font-family: var(--font-heading) !important;
+  letter-spacing: -0.02em;
+}
+p, span, .ant-typography {
+  color: #FFFFFF !important;
+}
+.ant-typography strong {
+  color: #FFFFFF !important;
+}
+
+/* 6 Inputs */
+.ant-input, .ant-input-number, .ant-select-selector, .ant-picker {
+  background: var(--input-bg) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 6px !important;
+}
+.ant-input:focus, .ant-input:hover, 
+.ant-input-number:focus, .ant-input-number:hover, .ant-input-number-focused,
+.ant-select:hover .ant-select-selector, .ant-select-focused .ant-select-selector,
+.ant-picker:hover, .ant-picker-focused {
+  border-color: var(--accent-primary) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(27, 58, 107, 0.1) !important;
+}
+
+/* 7 Cards / Forms */
+.ant-card {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--card-shadow) !important;
+  border-radius: 10px !important;
+}
+
+/* 8 Alerts & Notifications (FIXED CONTRAST) */
+.alert, .ant-alert {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 12px 16px !important;
+  border-radius: 8px !important;
+  margin-bottom: 24px !important;
+  border: 1px solid transparent !important;
+}
+
+/* Force children to inherit alert color, bypassing global * { color: #FFF } */
+.alert *, .ant-alert *, .success-box *, .info-box *, .error-box *, .warning-box *, .ant-message-notice-content * {
+  color: inherit !important;
+}
+
+/* Default White Box Visibility */
+.alert, .success-box, .info-box {
+  background: #FFFFFF !important;
+  color: #1E293B !important; /* Dark Slate for light background */
+  border: 1px solid var(--border) !important;
+}
+
+/* Specific Status Types */
+.alert-success, .ant-alert-success, .success-box {
+  background: #ECFDF5 !important;
+  color: #065F46 !important;
+  border: 1px solid var(--success) !important;
+}
+
+.alert-warning, .ant-alert-warning, .warning-box {
+  background: #FFFBEB !important;
+  color: #92400E !important;
+  border: 1px solid var(--warning) !important;
+}
+
+.alert-error, .ant-alert-error, .error-box {
+  background: #FEF2F2 !important;
+  color: #991B1B !important;
+  border: 1px solid var(--error) !important;
+}
+
+.alert-info, .ant-alert-info, .info-box {
+  background: #EFF6FF !important;
+  color: #1E40AF !important;
+  border: 1px solid var(--accent-primary) !important;
+}
+
+/* ANTD Message styling */
+.ant-message-notice-content {
+  background: #FFFFFF !important;
+  color: #1E293B !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+  padding: 10px 16px !important;
+}
+
+/* Icon visibility */
+.alert-icon, .ant-alert-icon, .ant-message-custom-content .anticon {
+  font-size: 18px !important;
+  color: inherit !important;
+}
+
+.ant-alert-message {
+  font-weight: 600 !important;
+  color: inherit !important;
+}
+
+.ant-alert-description {
+  color: inherit !important;
+  opacity: 0.9 !important;
 }

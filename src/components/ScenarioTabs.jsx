@@ -12,7 +12,7 @@ const { Text } = Typography;
 const ScenarioTabs = ({ currentScenario, onScenarioChange }) => {
     return (
         <div style={{ marginBottom: '32px', textAlign: 'center' }}>
-            <Text strong style={{ display: 'block', marginBottom: '12px', color: '#084C8D' }}>
+            <Text strong style={{ display: 'block', marginBottom: '12px', color: 'var(--accent-primary)' }}>
                 Select Analysis Scenario:
             </Text>
             <Segmented
