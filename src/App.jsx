@@ -22,11 +22,11 @@ const App = () => {
                 algorithm: antdTheme.darkAlgorithm,
                 token: {
                     colorPrimary: '#3B82F6',
-                    colorLink: '#0D9488',
+                    colorLink: '#3B82F6',
                     borderRadius: 30,
                     fontFamily: "'Outfit', sans-serif",
-                    colorText: '#F8FAFC',
-                    colorTextSecondary: '#94A3B8',
+                    colorText: '#FFFFFF',
+                    colorTextSecondary: 'rgba(255, 255, 255, 0.7)',
                     colorBgLayout: '#0F172A',
                     colorBgContainer: '#1E293B',
                     colorBorder: '#334155',
@@ -39,7 +39,7 @@ const App = () => {
                     },
                     Card: {
                         borderRadiusLG: 24,
-                        boxShadow: 'var(--card-shadow)',
+                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
                         colorBgContainer: '#1E293B',
                     },
                     Input: {
@@ -55,6 +55,7 @@ const App = () => {
                 }
             }}
         >
+
             <Router>
                 <Routes>
                     {/* Main Routes */}

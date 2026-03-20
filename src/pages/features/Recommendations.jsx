@@ -162,86 +162,77 @@ const Recommendations = () => {
     };
 
     return (
-        <ConfigProvider
-            theme={{
-                token: {
-                    colorPrimary: '#1B3A6B',
-                    borderRadius: 10,
-                    fontFamily: "'Outfit', sans-serif",
-                },
-            }}
-        >
-            <Layout style={{ minHeight: '100vh', background: 'var(--bg-page)', padding: '40px 24px' }}>
-                <Content style={{ maxWidth: '1000px', margin: '0 auto', width: '100%' }}>
-                    <Button
-                        icon={<ArrowLeftOutlined />}
-                        onClick={() => navigate('/dashboard', { state: location.state })}
-                        style={{ marginBottom: '24px', borderRadius: '12px', fontWeight: 600, color: 'var(--accent-primary)' }}
-                    >
-                        Back to Dashboard
-                    </Button>
+        <Layout style={{ minHeight: '100vh', background: 'var(--bg-page)', padding: '40px 24px' }}>
+            <Content style={{ maxWidth: '1000px', margin: '0 auto', width: '100%' }}>
+                <Button
+                    icon={<ArrowLeftOutlined />}
+                    onClick={() => navigate('/dashboard', { state: location.state })}
+                    style={{ marginBottom: '24px', borderRadius: '12px', fontWeight: 600, color: 'var(--accent-primary)' }}
+                >
+                    Back to Dashboard
+                </Button>
 
-                    <Title level={2} style={{ color: 'var(--accent-primary)', fontWeight: 800 }}>
-                        Actionable Recommendations
-                    </Title>
-                    <Paragraph style={{ color: 'var(--text-secondary)', fontSize: '16px', marginBottom: '40px' }}>
-                        Step-by-step suggestions to improve your tax efficiency and financial health.
-                    </Paragraph>
+                <Title level={2} style={{ color: 'var(--accent-primary)', fontWeight: 800 }}>
+                    Actionable Recommendations
+                </Title>
+                <Paragraph style={{ color: 'var(--text-secondary)', fontSize: '16px', marginBottom: '40px' }}>
+                    Step-by-step suggestions to improve your tax efficiency and financial health.
+                </Paragraph>
 
-                    <Row gutter={[24, 24]}>
-                        {recommendations.map((rec) => (
-                            <Col xs={24} md={12} key={rec.id}>
-                                <Badge.Ribbon text={rec.tag} color={rec.iconColor} style={{ padding: '0 12px', borderRadius: '4px', top: '20px', right: '-10px' }}>
-                                    <Card style={recCardStyle} bodyStyle={{ padding: '40px' }}>
-                                        <Space direction="vertical" size={24} style={{ width: '100%' }}>
-                                            <div style={{
-                                                width: '56px',
-                                                height: '56px',
-                                                background: `${rec.iconColor}15`,
-                                                borderRadius: '16px',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                color: rec.iconColor,
-                                                fontSize: '24px'
-                                            }}>
-                                                {rec.icon}
-                                            </div>
-                                            <div>
-                                                <Title level={4} style={{ color: 'var(--accent-primary)', margin: '0 0 12px 0', fontWeight: 700 }}>{rec.title}</Title>
-                                                <Paragraph style={{ color: 'var(--text-secondary)', fontSize: '15px', lineHeight: 1.6 }}>{rec.description}</Paragraph>
-                                            </div>
-                                            <div style={{ padding: '16px 20px', background: 'var(--bg-card)', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                <Text type="secondary" style={{ fontSize: '13px', fontWeight: 600 }}>POTENTIAL SAVINGS</Text>
-                                                <Text strong style={{ color: 'var(--success)', fontSize: '18px' }}>{rec.savings}</Text>
-                                            </div>
-                                        </Space>
-                                    </Card>
-                                </Badge.Ribbon>
-                            </Col>
-                        ))}
+                <Row gutter={[24, 24]}>
+                    {recommendations.map((rec) => (
+                        <Col xs={24} md={12} key={rec.id}>
+                            <Badge.Ribbon text={rec.tag} color={rec.iconColor} style={{ padding: '0 12px', borderRadius: '4px', top: '20px', right: '-10px' }}>
+                                <Card style={recCardStyle} bodyStyle={{ padding: '40px' }}>
+                                    <Space direction="vertical" size={24} style={{ width: '100%' }}>
+                                        <div style={{
+                                            width: '56px',
+                                            height: '56px',
+                                            background: `${rec.iconColor}15`,
+                                            borderRadius: '16px',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            color: rec.iconColor,
+                                            fontSize: '24px'
+                                        }}>
+                                            {rec.icon}
+                                        </div>
+                                        <div>
+                                            <Title level={4} style={{ color: 'var(--accent-primary)', margin: '0 0 12px 0', fontWeight: 700 }}>{rec.title}</Title>
+                                            <Paragraph style={{ color: 'var(--text-secondary)', fontSize: '15px', lineHeight: 1.6 }}>{rec.description}</Paragraph>
+                                        </div>
+                                        <div style={{ padding: '16px 20px', background: 'var(--bg-card)', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                            <Text type="secondary" style={{ fontSize: '13px', fontWeight: 600 }}>POTENTIAL SAVINGS</Text>
+                                            <Text strong style={{ color: 'var(--success)', fontSize: '18px' }}>{rec.savings}</Text>
+                                        </div>
+                                    </Space>
+                                </Card>
+                            </Badge.Ribbon>
+                        </Col>
+                    ))}
 
-                        {recommendations.length === 0 && (
-                            <Col span={24} style={{ textAlign: 'center', padding: '100px 0' }}>
-                                <Paragraph style={{ fontSize: '18px', color: 'var(--text-secondary)' }}>Your profile is highly optimized. No additional recommendations available.</Paragraph>
-                            </Col>
-                        )}
-                    </Row>
+                    {recommendations.length === 0 && (
+                        <Col span={24} style={{ textAlign: 'center', padding: '100px 0' }}>
+                            <Paragraph style={{ fontSize: '18px', color: 'var(--text-secondary)' }}>Your profile is highly optimized. No additional recommendations available.</Paragraph>
+                        </Col>
+                    )}
+                </Row>
 
-                    <div style={{ marginTop: '80px', textAlign: 'center' }}>
-                        <div style={{ background: 'var(--bg-card)', padding: '32px', borderRadius: '24px', border: '1px dashed #5B92E5', display: 'inline-block', maxWidth: '600px' }}>
-                            <Title level={4} style={{ color: 'var(--accent-primary)', marginBottom: '12px' }}>Expert Review Available</Title>
-                            <Paragraph style={{ color: 'var(--text-secondary)' }}>Get these recommendations vetted by a chartered accountant for personalized advice. Coming soon.</Paragraph>
-                        </div>
+                <div style={{ marginTop: '80px', textAlign: 'center' }}>
+                    <div className="alert-info" style={{ padding: '32px', borderRadius: '24px', display: 'inline-block', maxWidth: '600px', textAlign: 'center' }}>
+                        <Title level={4} style={{ marginBottom: '12px' }}>Expert Review Available</Title>
+                        <Paragraph>Get these recommendations vetted by a chartered accountant for personalized advice. Coming soon.</Paragraph>
                     </div>
+                </div>
 
-                    <div style={{ marginTop: '40px' }}>
-                        <TaxAssistantChatbot />
-                    </div>
-                </Content>
-            </Layout>
-        </ConfigProvider>
+                <div style={{ marginTop: '40px' }}>
+                    <TaxAssistantChatbot />
+                </div>
+            </Content>
+        </Layout>
     );
 };
+
 
 export default Recommendations;

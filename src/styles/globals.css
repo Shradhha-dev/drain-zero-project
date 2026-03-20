@@ -204,52 +204,62 @@ p, span, .ant-typography {
   border-radius: 10px !important;
 }
 
-/* 8 Alerts & Notifications (FIXED CONTRAST) */
+/* 8 Alerts & Notifications (FIXED CONTRAST & VISIBILITY) */
+/* Rule 3: Add Structure to Alert Box */
 .alert, .ant-alert {
   display: flex !important;
   align-items: center !important;
-  gap: 12px !important;
-  padding: 12px 16px !important;
-  border-radius: 8px !important;
+  gap: 10px !important; /* Rule 3 gap */
+  padding: 12px !important;  /* Rule 3 padding */
+  border-radius: 8px !important; /* Rule 3 border-radius */
   margin-bottom: 24px !important;
-  border: 1px solid transparent !important;
 }
 
-/* Force children to inherit alert color, bypassing global * { color: #FFF } */
+/* Rule 5: Prevent Dark Theme Inheritance Issue */
 .alert *, .ant-alert *, .success-box *, .info-box *, .error-box *, .warning-box *, .ant-message-notice-content * {
   color: inherit !important;
 }
 
-/* Default White Box Visibility */
+/* Rule 1: Fix Text Visibility (CRITICAL) */
 .alert, .success-box, .info-box {
   background: #FFFFFF !important;
-  color: #1E293B !important; /* Dark Slate for light background */
+  color: #1E293B !important; /* MUST be dark - using hex to avoid var conflict */
   border: 1px solid var(--border) !important;
 }
 
-/* Specific Status Types */
+/* Rule 2: Add Proper Contrast for Status Types */
+/* Success */
 .alert-success, .ant-alert-success, .success-box {
   background: #ECFDF5 !important;
   color: #065F46 !important;
   border: 1px solid var(--success) !important;
 }
 
+/* Warning */
 .alert-warning, .ant-alert-warning, .warning-box {
   background: #FFFBEB !important;
   color: #92400E !important;
   border: 1px solid var(--warning) !important;
 }
 
+/* Error */
 .alert-error, .ant-alert-error, .error-box {
   background: #FEF2F2 !important;
   color: #991B1B !important;
   border: 1px solid var(--error) !important;
 }
 
+/* Info */
 .alert-info, .ant-alert-info, .info-box {
   background: #EFF6FF !important;
   color: #1E40AF !important;
   border: 1px solid var(--accent-primary) !important;
+}
+
+/* Rule 4: Fix Icon Visibility */
+.alert-icon, .ant-alert-icon, .ant-message-custom-content .anticon {
+  font-size: 16px !important; /* Rule 4 size */
+  color: inherit !important; /* Rule 4 same as text */
 }
 
 /* ANTD Message styling */
@@ -259,12 +269,6 @@ p, span, .ant-typography {
   border-radius: 8px !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
   padding: 10px 16px !important;
-}
-
-/* Icon visibility */
-.alert-icon, .ant-alert-icon, .ant-message-custom-content .anticon {
-  font-size: 18px !important;
-  color: inherit !important;
 }
 
 .ant-alert-message {
