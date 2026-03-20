@@ -123,153 +123,141 @@ const CategorySelection = () => {
     });
 
     return (
-        <ConfigProvider
-            theme={{
-                token: {
-                    colorPrimary: '#1B3A6B',
-                    borderRadius: 10,
-                    fontFamily: "'Outfit', sans-serif",
-                },
-            }}
-        >
-            <Layout style={{ minHeight: '100vh', background: 'var(--bg-page)', padding: '60px 24px' }}>
-                <Content style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}>
-                    {/* Header */}
-                    <div style={{ marginBottom: '64px', textAlign: 'center' }}>
-                        <Title level={1} style={{ color: 'var(--accent-primary)', marginBottom: '12px', fontWeight: 800, fontSize: '3rem' }}>
-                            Select Category
-                        </Title>
-                        <Paragraph style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: 600, margin: '0 auto' }}>
-                            What activity would you like to analyze for tax optimization today?
-                        </Paragraph>
-                    </div>
+        <Layout style={{ minHeight: '100vh', background: 'var(--bg-page)', padding: '60px 24px' }}>
+            <Content style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}>
+                <div style={{ marginBottom: '64px', textAlign: 'center' }}>
+                    <Title level={1} style={{ color: '#FFFFFF', marginBottom: '12px', fontWeight: 800, fontSize: '3rem' }}>
+                        Select Category
+                    </Title>
+                    <Paragraph style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: 600, margin: '0 auto' }}>
+                        What activity would you like to analyze for tax optimization today?
+                    </Paragraph>
+                </div>
 
-                    {/* Step 1: Main Category */}
-                    <div style={{ marginBottom: '60px' }}>
-                        <Title level={4} style={{ color: 'var(--accent-primary)', marginBottom: '24px', opacity: 0.8, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px' }}>
-                            01 — Main Category
-                        </Title>
-                        <Row gutter={[24, 24]}>
-                            {CATEGORIES.map((cat) => (
-                                <Col xs={24} sm={12} md={6} key={cat.id}>
-                                    <div
-                                        style={cardStyle(selectedCategory === cat.id)}
-                                        onClick={() => handleCategorySelect(cat.id)}
-                                        className="selection-card"
-                                    >
-                                        <div style={{
-                                            width: '64px',
-                                            height: '64px',
-                                            background: selectedCategory === cat.id ? '#5B92E515' : 'var(--bg-card)',
-                                            borderRadius: '18px',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            color: selectedCategory === cat.id ? 'var(--accent-secondary)' : 'var(--accent-primary)',
-                                            marginBottom: '24px',
-                                            margin: '0 auto 24px'
-                                        }}>
-                                            {cat.icon}
-                                        </div>
-                                        <Title level={4} style={{ margin: '0 0 12px 0', color: 'var(--accent-primary)', fontWeight: 700 }}>
-                                            {cat.title}
-                                        </Title>
-                                        <Text style={{ fontSize: '14px', lineHeight: '1.5', color: 'var(--text-secondary)' }}>
-                                            {cat.description}
-                                        </Text>
-                                        {selectedCategory === cat.id && (
-                                            <div style={{
-                                                position: 'absolute',
-                                                top: '16px',
-                                                right: '16px',
-                                                color: 'var(--accent-secondary)'
-                                            }}>
-                                                <CheckCircleFilled style={{ fontSize: '24px' }} />
-                                            </div>
-                                        )}
+                <div style={{ marginBottom: '60px' }}>
+                    <Title level={4} style={{ color: 'var(--accent-secondary)', marginBottom: '24px', opacity: 0.8, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px' }}>
+                        01 — Main Category
+                    </Title>
+                    <Row gutter={[24, 24]}>
+                        {CATEGORIES.map((cat) => (
+                            <Col xs={24} sm={12} md={6} key={cat.id}>
+                                <div
+                                    style={cardStyle(selectedCategory === cat.id)}
+                                    onClick={() => handleCategorySelect(cat.id)}
+                                    className="selection-card"
+                                >
+                                    <div style={{
+                                        width: '64px',
+                                        height: '64px',
+                                        background: selectedCategory === cat.id ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.05)',
+                                        borderRadius: '18px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        color: selectedCategory === cat.id ? 'var(--accent-secondary)' : '#FFFFFF',
+                                        marginBottom: '24px',
+                                        margin: '0 auto 24px'
+                                    }}>
+                                        {cat.icon}
                                     </div>
+                                    <Title level={4} style={{ margin: '0 0 12px 0', color: '#FFFFFF', fontWeight: 700 }}>
+                                        {cat.title}
+                                    </Title>
+                                    <Text style={{ fontSize: '14px', lineHeight: '1.5', color: 'var(--text-secondary)' }}>
+                                        {cat.description}
+                                    </Text>
+                                    {selectedCategory === cat.id && (
+                                        <div style={{
+                                            position: 'absolute',
+                                            top: '16px',
+                                            right: '16px',
+                                            color: 'var(--accent-secondary)'
+                                        }}>
+                                            <CheckCircleFilled style={{ fontSize: '24px' }} />
+                                        </div>
+                                    )}
+                                </div>
+                            </Col>
+                        ))}
+                    </Row>
+                </div>
+
+                {selectedCategory && (
+                    <div style={{ marginBottom: '60px', animation: 'slideUp 0.4s ease-out' }}>
+                        <Title level={4} style={{ color: 'var(--accent-secondary)', marginBottom: '24px', opacity: 0.8, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px' }}>
+                            02 — Select Subcategory
+                        </Title>
+                        <Row gutter={[16, 16]}>
+                            {SUBCATEGORIES[selectedCategory].map((sub, index) => (
+                                <Col xs={24} sm={12} md={6} lg={4} key={index}>
+                                    <Button
+                                        block
+                                        style={subcategoryButtonStyle(selectedSubcategory === sub)}
+                                        onClick={() => handleSubcategorySelect(sub)}
+                                        className="sub-btn"
+                                    >
+                                        {sub}
+                                    </Button>
                                 </Col>
                             ))}
                         </Row>
                     </div>
+                )}
 
-                    {/* Step 2: Subcategory */}
-                    {selectedCategory && (
-                        <div style={{ marginBottom: '60px', animation: 'slideUp 0.4s ease-out' }}>
-                            <Title level={4} style={{ color: 'var(--accent-primary)', marginBottom: '24px', opacity: 0.8, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px' }}>
-                                02 — Select Subcategory
-                            </Title>
-                            <Row gutter={[16, 16]}>
-                                {SUBCATEGORIES[selectedCategory].map((sub, index) => (
-                                    <Col xs={24} sm={12} md={6} lg={4} key={index}>
-                                        <Button
-                                            block
-                                            style={subcategoryButtonStyle(selectedSubcategory === sub)}
-                                            onClick={() => handleSubcategorySelect(sub)}
-                                            className="sub-btn"
-                                        >
-                                            {sub}
-                                        </Button>
-                                    </Col>
-                                ))}
-                            </Row>
-                        </div>
-                    )}
-
-                    {/* Step 3: Ownership (Vehicle Only) */}
-                    {selectedCategory === 'Vehicle' && selectedSubcategory && (
-                        <div style={{ marginBottom: '60px', animation: 'slideUp 0.4s ease-out' }}>
-                            <Title level={4} style={{ color: 'var(--accent-primary)', marginBottom: '24px', opacity: 0.8, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px' }}>
-                                03 — Ownership Type
-                            </Title>
-                            <Row gutter={[16, 16]}>
-                                {OWNERSHIP_TYPES.map((type, index) => (
-                                    <Col xs={12} sm={8} md={6} key={index}>
-                                        <Button
-                                            block
-                                            style={subcategoryButtonStyle(selectedOwnership === type)}
-                                            onClick={() => handleOwnershipSelect(type)}
-                                            className="sub-btn"
-                                        >
-                                            {type}
-                                        </Button>
-                                    </Col>
-                                ))}
-                            </Row>
-                        </div>
-                    )}
-
-                    <div style={{ marginTop: '80px', textAlign: 'center' }}>
-                        <Button
-                            type="text"
-                            icon={<ArrowLeftOutlined />}
-                            onClick={() => navigate('/')}
-                            style={{ color: 'var(--accent-primary)', fontWeight: 600, fontSize: '16px' }}
-                        >
-                            Back to Landing Page
-                        </Button>
+                {selectedCategory === 'Vehicle' && selectedSubcategory && (
+                    <div style={{ marginBottom: '60px', animation: 'slideUp 0.4s ease-out' }}>
+                        <Title level={4} style={{ color: 'var(--accent-secondary)', marginBottom: '24px', opacity: 0.8, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px' }}>
+                            03 — Ownership Type
+                        </Title>
+                        <Row gutter={[16, 16]}>
+                            {OWNERSHIP_TYPES.map((type, index) => (
+                                <Col xs={12} sm={8} md={6} key={index}>
+                                    <Button
+                                        block
+                                        style={subcategoryButtonStyle(selectedOwnership === type)}
+                                        onClick={() => handleOwnershipSelect(type)}
+                                        className="sub-btn"
+                                    >
+                                        {type}
+                                    </Button>
+                                </Col>
+                            ))}
+                        </Row>
                     </div>
+                )}
 
-                    <style>
-                        {`
-                            @keyframes slideUp {
-                                from { opacity: 0; transform: translateY(20px); }
-                                to { opacity: 1; transform: translateY(0); }
-                            }
-                            .selection-card:hover {
-                                transform: translateY(-8px);
-                                box-shadow: var(--card-shadow) !important;
-                            }
-                            .sub-btn:hover {
-                                border-color: #5B92E5 !important;
-                                color: #5B92E5 !important;
-                            }
-                        `}
-                    </style>
-                </Content>
-            </Layout>
-        </ConfigProvider>
+                <div style={{ marginTop: '80px', textAlign: 'center' }}>
+                    <Button
+                        type="text"
+                        icon={<ArrowLeftOutlined />}
+                        onClick={() => navigate('/')}
+                        style={{ color: '#FFFFFF', fontWeight: 600, fontSize: '16px', opacity: 0.7 }}
+                    >
+                        Back to Landing Page
+                    </Button>
+                </div>
+
+                <style>
+                    {`
+                        @keyframes slideUp {
+                            from { opacity: 0; transform: translateY(20px); }
+                            to { opacity: 1; transform: translateY(0); }
+                        }
+                        .selection-card:hover {
+                            transform: translateY(-8px);
+                            border-color: var(--accent-secondary) !important;
+                        }
+                        .sub-btn:hover {
+                            background: rgba(255,255,255,0.1) !important;
+                            border-color: var(--accent-secondary) !important;
+                            color: #FFFFFF !important;
+                        }
+                    `}
+                </style>
+            </Content>
+        </Layout>
     );
 };
+
 
 export default CategorySelection;

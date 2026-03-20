@@ -161,57 +161,51 @@ const TaxLeakage = () => {
     }
 
     return (
-        <ConfigProvider
-            theme={{
-                token: {
-                    colorPrimary: '#1B3A6B',
-                    borderRadius: 10,
-                    fontFamily: "'Outfit', sans-serif",
-                },
-            }}
-        >
-            <Layout style={{ minHeight: '100vh', background: 'var(--bg-page)', padding: '40px 24px' }}>
-                <Content style={{ maxWidth: '1000px', margin: '0 auto', width: '100%' }}>
-                    <Button
-                        icon={<ArrowLeftOutlined />}
-                        onClick={() => navigate('/dashboard', { state: location.state })}
-                        style={{ marginBottom: '24px', borderRadius: '12px', fontWeight: 600, color: 'var(--accent-primary)' }}
-                    >
-                        Back to Dashboard
-                    </Button>
+        <Layout style={{ minHeight: '100vh', background: 'var(--bg-page)', padding: '40px 24px' }}>
+            <Content style={{ maxWidth: '1000px', margin: '0 auto', width: '100%' }}>
+                <Button
+                    icon={<ArrowLeftOutlined />}
+                    onClick={() => navigate('/dashboard', { state: location.state })}
+                    style={{ marginBottom: '24px', borderRadius: '12px', fontWeight: 600, color: 'var(--accent-primary)' }}
+                >
+                    Back to Dashboard
+                </Button>
 
-                    <Title level={2} style={{ color: 'var(--accent-primary)', fontWeight: 800 }}>
-                        Tax Leakage Detection
-                    </Title>
-                    <Paragraph style={{ color: 'var(--text-secondary)', fontSize: '16px', marginBottom: '40px' }}>
-                        Identifying efficiency gaps where you are paying more tax than legally necessary.
-                    </Paragraph>
+                <Title level={2} style={{ color: 'var(--accent-primary)', fontWeight: 800 }}>
+                    Tax Leakage Detection
+                </Title>
+                <Paragraph style={{ color: 'var(--text-secondary)', fontSize: '16px', marginBottom: '40px' }}>
+                    Identifying efficiency gaps where you are paying more tax than legally necessary.
+                </Paragraph>
 
-                    <Row gutter={[24, 24]} style={{ marginBottom: '40px' }}>
-                        <Col span={24}>
-                            <Card
-                                style={{ borderRadius: '24px', background: '#EF444408', border: '1px solid #FCA5A5' }}
-                                bodyStyle={{ padding: '40px' }}
-                            >
-                                <Row align="middle" gutter={24}>
-                                    <Col xs={24} md={12}>
-                                        <Space direction="vertical" size={12}>
-                                            <Tag color="red" style={{ fontWeight: 700, borderRadius: '4px' }} icon={<WarningOutlined />}>HIGH LEAKAGE FOUND</Tag>
-                                            <Title level={1} style={{ margin: 0, color: 'var(--accent-primary)', fontWeight: 800 }}>
-                                                ₹{totalLeakage.toLocaleString()}
-                                            </Title>
-                                            <Text style={{ fontSize: '18px', color: 'var(--text-secondary)' }}>Total Estimated Annual Tax Leakage</Text>
-                                        </Space>
-                                    </Col>
-                                    <Col xs={24} md={12} style={{ textAlign: 'right' }}>
-                                        <div style={{ padding: '24px', background: 'var(--bg-card)', borderRadius: '20px', display: 'inline-block', minWidth: '240px', boxShadow: 'var(--card-shadow)' }}>
-                                            <Statistic title={<span style={{ color: 'var(--accent-primary)' }}>Optimization Potential</span>} value={88} suffix="%" valueStyle={{ color: 'var(--error)', fontWeight: 800 }} />
-                                        </div>
-                                    </Col>
-                                </Row>
-                            </Card>
-                        </Col>
-                    </Row>
+                <Row gutter={[24, 24]} style={{ marginBottom: '40px' }}>
+                    <Col span={24}>
+                        <Card
+                            className="alert-error"
+                            style={{ borderRadius: '24px' }}
+                            bodyStyle={{ padding: '40px' }}
+                        >
+                            <Row align="middle" gutter={24}>
+                                <Col xs={24} md={12}>
+                                    <Space direction="vertical" size={12}>
+                                        <Tag color="red" style={{ fontWeight: 700, borderRadius: '4px' }} icon={<WarningOutlined />}>HIGH LEAKAGE FOUND</Tag>
+                                        <Title level={1} style={{ margin: 0, fontWeight: 800 }}>
+                                            ₹{totalLeakage.toLocaleString()}
+                                        </Title>
+                                        <Text style={{ fontSize: '18px' }}>Total Estimated Annual Tax Leakage</Text>
+                                    </Space>
+                                </Col>
+                                <Col xs={24} md={12} style={{ textAlign: 'right' }}>
+                                    <div style={{ padding: '24px', background: 'var(--bg-card)', borderRadius: '20px', display: 'inline-block', minWidth: '240px', boxShadow: 'var(--card-shadow)' }}>
+                                        <Statistic title={<span style={{ color: 'var(--accent-primary)' }}>Optimization Potential</span>} value={88} suffix="%" valueStyle={{ color: 'var(--error)', fontWeight: 800 }} />
+                                    </div>
+                                </Col>
+                            </Row>
+                        </Card>
+                    </Col>
+                </Row>
+
+
 
                     <Card
                         title={<Space><InfoCircleFilled style={{ color: 'var(--accent-secondary)' }} /> <span>Leakage Breakdown</span></Space>}
@@ -260,8 +254,8 @@ const TaxLeakage = () => {
                     </style>
                 </Content>
             </Layout>
-        </ConfigProvider>
     );
 };
+
 
 export default TaxLeakage;

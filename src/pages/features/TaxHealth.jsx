@@ -90,106 +90,98 @@ const TaxHealth = () => {
     else if (scoreFinal < 80) { level = 'Moderate'; statusColor = 'var(--warning)'; }
 
     return (
-        <ConfigProvider
-            theme={{
-                token: {
-                    colorPrimary: '#1B3A6B',
-                    borderRadius: 10,
-                    fontFamily: "'Outfit', sans-serif",
-                },
-            }}
-        >
-            <Layout style={{ minHeight: '100vh', background: 'var(--bg-page)', padding: '40px 24px' }}>
-                <Content style={{ maxWidth: '1000px', margin: '0 auto', width: '100%' }}>
-                    <Button
-                        icon={<ArrowLeftOutlined />}
-                        onClick={() => navigate('/dashboard', { state: location.state })}
-                        style={{ marginBottom: '24px', borderRadius: '12px', fontWeight: 600, color: 'var(--accent-primary)' }}
-                    >
-                        Back to Dashboard
-                    </Button>
+        <Layout style={{ minHeight: '100vh', background: 'var(--bg-page)', padding: '40px 24px' }}>
 
-                    <Title level={2} style={{ color: 'var(--accent-primary)', fontWeight: 800 }}>
-                        Tax Health Score
-                    </Title>
-                    <Paragraph style={{ color: 'var(--text-secondary)', fontSize: '16px', marginBottom: '40px' }}>
-                        Your overall fiscal efficiency score across regime, investments, and assets.
+            <Content style={{ maxWidth: '1000px', margin: '0 auto', width: '100%' }}>
+                <Button
+                    icon={<ArrowLeftOutlined />}
+                    onClick={() => navigate('/dashboard', { state: location.state })}
+                    style={{ marginBottom: '24px', borderRadius: '12px', fontWeight: 600, color: 'var(--accent-primary)' }}
+                >
+                    Back to Dashboard
+                </Button>
+
+                <Title level={2} style={{ color: 'var(--accent-primary)', fontWeight: 800 }}>
+                    Tax Health Score
+                </Title>
+                <Paragraph style={{ color: 'var(--text-secondary)', fontSize: '16px', marginBottom: '40px' }}>
+                    Your overall fiscal efficiency score across regime, investments, and assets.
+                </Paragraph>
+
+                <Row gutter={[24, 24]} style={{ marginBottom: '40px' }}>
+                    <Col xs={24} md={12}>
+                        <Card
+                            style={{ borderRadius: '24px', textAlign: 'center', height: '100%', padding: '40px 20px', background: 'var(--bg-card)' }}
+                            bodyStyle={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+                        >
+                            <Progress
+                                type="dashboard"
+                                percent={scoreFinal}
+                                strokeColor={statusColor}
+                                strokeWidth={10}
+                                width={220}
+                                gapDegree={40}
+                                format={(percent) => (
+                                    <div style={{ padding: '0 20px' }}>
+                                        <div style={{ fontSize: '48px', fontWeight: 800, color: 'var(--accent-primary)' }}>{percent}</div>
+                                        <div style={{ fontSize: '16px', color: 'var(--text-secondary)', marginTop: '-10px' }}>out of 100</div>
+                                    </div>
+                                )}
+                            />
+                            <div style={{ marginTop: '24px' }}>
+                                <Tag color={statusColor === 'var(--success)' ? 'green' : statusColor === 'var(--warning)' ? 'orange' : 'red'} style={{ padding: '4px 20px', fontSize: '16px', fontWeight: 700, borderRadius: '50px' }}>
+                                    {level} Optimization
+                                </Tag>
+                            </div>
+                        </Card>
+                    </Col>
+                    <Col xs={24} md={12}>
+                        <Card
+                            style={{ borderRadius: '24px', height: '100%', background: 'var(--accent-primary)' }}
+                            title={<span style={{ color: 'var(--bg-card)', fontWeight: 700 }}>Optimization Breakdown</span>}
+                        >
+                            <List
+                                dataSource={factors}
+                                renderItem={(item) => (
+                                    <List.Item style={{ borderBottom: '1px solid rgba(0,0,0,0.1)', padding: '16px 0' }}>
+                                        <List.Item.Meta
+                                            avatar={item.status === 'success' ? <CheckCircleFilled style={{ color: 'var(--success)', fontSize: '20px' }} /> : <WarningOutlined style={{ color: 'var(--warning)', fontSize: '20px' }} />}
+                                            title={<Text style={{ color: 'var(--bg-card)', fontWeight: 600 }}>{item.title}</Text>}
+                                            description={<Text style={{ color: 'var(--bg-card)', fontSize: '13px', opacity: 0.8 }}>{item.description}</Text>}
+                                        />
+                                    </List.Item>
+                                )}
+                            />
+                        </Card>
+                    </Col>
+                </Row>
+
+                <Card
+                    style={{ borderRadius: '24px', border: 'none', padding: '24px', backgroundColor: 'var(--bg-card)' }}
+                    title={<Space><SafetyCertificateFilled style={{ color: 'var(--accent-secondary)' }} /> <span style={{ color: '#FFFFFF' }}>Improvement Strategy</span></Space>}
+                >
+                    <Paragraph style={{ color: 'var(--text-secondary)', fontSize: '15px', lineHeight: 2 }}>
+                        To reach a <strong>Perfect Score (100)</strong>, you should:
+                        <ul style={{ paddingLeft: '20px', marginTop: '12px', color: 'var(--text-secondary)' }}>
+                            <li style={{ color: 'inherit' }}>Fully utilize Section 80C through voluntary provident funds (VPF) or ELSS mutual funds.</li>
+                            <li style={{ color: 'inherit' }}>Claim the additional ₹50,000 deduction under Section 80CCD(1B) for NPS.</li>
+                            {category === 'Vehicle' && (
+                                <li style={{ color: 'inherit' }}>Restructure your {subcategory} ownership to business usage if eligible, claiming 15% annual depreciation.</li>
+                            )}
+                            {category === 'Health Insurance' && (
+                                <>
+                                    <li style={{ color: 'inherit' }}>Maximize Parents' 80D limit (₹50k if seniors) by paying their premiums from your taxable income.</li>
+                                    <li style={{ color: 'inherit' }}>Always claim the ₹5,000 preventive health checkup - no separate receipts needed if paid digitally.</li>
+                                </>
+                            )}
+                            <li style={{ color: 'inherit' }}>Ensure medical premium receipts cover both health checkups and primary insurance.</li>
+                        </ul>
                     </Paragraph>
+                </Card>
+                <TaxAssistantChatbot />
+            </Content>
+        </Layout>
 
-                    <Row gutter={[24, 24]} style={{ marginBottom: '40px' }}>
-                        <Col xs={24} md={12}>
-                            <Card
-                                style={{ borderRadius: '24px', textAlign: 'center', height: '100%', padding: '40px 20px' }}
-                                bodyStyle={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
-                            >
-                                <Progress
-                                    type="dashboard"
-                                    percent={scoreFinal}
-                                    strokeColor={statusColor}
-                                    strokeWidth={10}
-                                    width={220}
-                                    gapDegree={40}
-                                    format={(percent) => (
-                                        <div style={{ padding: '0 20px' }}>
-                                            <div style={{ fontSize: '48px', fontWeight: 800, color: 'var(--accent-primary)' }}>{percent}</div>
-                                            <div style={{ fontSize: '16px', color: 'var(--text-secondary)', marginTop: '-10px' }}>out of 100</div>
-                                        </div>
-                                    )}
-                                />
-                                <div style={{ marginTop: '24px' }}>
-                                    <Tag color={statusColor === 'var(--success)' ? 'green' : statusColor === 'var(--warning)' ? 'orange' : 'red'} style={{ padding: '4px 20px', fontSize: '16px', fontWeight: 700, borderRadius: '50px' }}>
-                                        {level} Optimization
-                                    </Tag>
-                                </div>
-                            </Card>
-                        </Col>
-                        <Col xs={24} md={12}>
-                            <Card
-                                style={{ borderRadius: '24px', height: '100%', background: 'var(--accent-primary)', color: 'var(--bg-card)' }}
-                                title={<span style={{ color: 'var(--bg-card)' }}>Optimization Breakdown</span>}
-                            >
-                                <List
-                                    dataSource={factors}
-                                    renderItem={(item) => (
-                                        <List.Item style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', padding: '16px 0' }}>
-                                            <List.Item.Meta
-                                                avatar={item.status === 'success' ? <CheckCircleFilled style={{ color: 'var(--success)', fontSize: '20px' }} /> : <WarningOutlined style={{ color: 'var(--warning)', fontSize: '20px' }} />}
-                                                title={<Text style={{ color: 'var(--bg-card)', fontWeight: 600 }}>{item.title}</Text>}
-                                                description={<Text style={{ color: 'var(--text-secondary)', fontSize: '13px' }}>{item.description}</Text>}
-                                            />
-                                        </List.Item>
-                                    )}
-                                />
-                            </Card>
-                        </Col>
-                    </Row>
-
-                    <Card
-                        style={{ borderRadius: '24px', border: 'none', padding: '24px', backgroundColor: 'var(--bg-card)' }}
-                        title={<Space><SafetyCertificateFilled style={{ color: 'var(--accent-secondary)' }} /> <span>Improvement Strategy</span></Space>}
-                    >
-                        <Paragraph style={{ color: 'var(--text-secondary)', fontSize: '15px', lineHeight: 2 }}>
-                            To reach a <strong>Perfect Score (100)</strong>, you should:
-                            <ul style={{ paddingLeft: '20px', marginTop: '12px' }}>
-                                <li>Fully utilize Section 80C through voluntary provident funds (VPF) or ELSS mutual funds.</li>
-                                <li>Claim the additional ₹50,000 deduction under Section 80CCD(1B) for NPS.</li>
-                                {category === 'Vehicle' && (
-                                    <li>Restructure your {subcategory} ownership to business usage if eligible, claiming 15% annual depreciation.</li>
-                                )}
-                                {category === 'Health Insurance' && (
-                                    <>
-                                        <li>Maximize Parents' 80D limit (₹50k if seniors) by paying their premiums from your taxable income.</li>
-                                        <li>Always claim the ₹5,000 preventive health checkup - no separate receipts needed if paid digitally.</li>
-                                    </>
-                                )}
-                                <li>Ensure medical premium receipts cover both health checkups and primary insurance.</li>
-                            </ul>
-                        </Paragraph>
-                    </Card>
-                    <TaxAssistantChatbot />
-                </Content>
-            </Layout>
-        </ConfigProvider>
     );
 };
 

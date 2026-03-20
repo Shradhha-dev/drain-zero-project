@@ -9,42 +9,15 @@ const SignupPage = () => {
     const navigate = useNavigate();
 
     return (
-        <ConfigProvider
-            theme={{
-                token: {
-                    colorPrimary: '#1B3A6B', // United Nations Blue
-                    borderRadius: 10,
-                    colorText: 'var(--text-primary)',
-                    fontFamily: "'Inter', sans-serif",
-                },
-                components: {
-                    Button: {
-                        controlHeightLG: 56,
-                        fontWeight: 600,
-                        borderRadius: 30,
-                    },
-                    Input: {
-                        colorBgContainer: 'var(--bg-card)',
-                        colorBorder: 'var(--border)',
-                        borderRadius: 20,
-                        controlHeight: 52,
-                    },
-                    Card: {
-                        paddingLG: 40,
-                        borderRadiusLG: 24,
-                        boxShadow: 'var(--card-shadow)',
-                    }
-                },
-            }}
-        >
-            <Layout style={{
-                minHeight: '100vh',
-                background: 'var(--bg-page)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '24px'
-            }}>
+        <Layout style={{
+            minHeight: '100vh',
+            background: 'var(--bg-page)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '24px'
+        }}>
+
                 <Card
                     style={{
                         maxWidth: 500,
@@ -106,8 +79,8 @@ const SignupPage = () => {
                     </Form>
                 </Card>
             </Layout>
-        </ConfigProvider>
     );
 };
+
 
 export default SignupPage;
